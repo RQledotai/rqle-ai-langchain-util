@@ -20,6 +20,9 @@
   <a href="https://github.com/streamlit/streamlit">
     <img src="https://img.shields.io/badge/dependency-streamlit-%B2EA00">
   </a>
+  <a href="https://github.com/qhreul/langchain-util/blob/develop/LICENSE">
+    <img src="https://img.shields.io/pypi/l/giteo">
+  </a>
 </p>
 
 - [Description](#description)
