@@ -65,7 +65,7 @@ This library extends LangChain by providing facilities to define configurations,
   **Note** Report is only generated if all unit test have completed successfully.
 
 ## Disclaimer <a name="disclaimer"></a>
-This library and its use of Large Language Models (LLMs) are subject to the following disclaimers:
+This library and its use of Large Language Models (LLMs) are subject to the **following disclaimers**:
 * LLMs are still under development and may generate inaccurate, incomplete, or biased output;
 * LLMs can inherit and reflect biases present in their training data;
 * Developers of this library are not liable for any damages or losses arising from its use;
