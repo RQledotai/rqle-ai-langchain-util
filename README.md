@@ -47,6 +47,7 @@ This library extends LangChain by providing facilities to define configurations,
 
 ### Requirements <a name="requirements"></a>
 * Git
+* Guardrails AI >= 0.4.0
 * LangChain >= 0.1.7
 * Python >= 3.11
 * Poetry >= 1.7.0

@@ -1,62 +1,85 @@
-import json
-import os
-from pathlib import Path
+from langchain_util.llms.adapters.llm_adapters import LLMAdapter
+from langchain_util.llms.adapters.local_llm_ai import _load_local_from_prompt_config
+from langchain_util.prompts.prompt_config import PromptConfig
+from langchain_util.prompts.prompt_template import PromptTemplate
+from langchain_util.prompts.prompt_example import PromptExample
+from langchain_util.utils.file_util import file_exists, read_file
 
 
-def file_exists(file_dir: str, file_name: str) -> bool:
+class LLMMediator:
+
+    def info(self) -> str:
+        """
+        :return: the name of the class
+        """
+        return self.__class__.__name__
+
+    def __init__(self, llm_adapter: LLMAdapter, prompt_config_dir: str, prompt_name: str):
+        """
+        :param llm_adapter: Adapter for the execution of the LLM
+        :param prompt_config_dir: Directory with the configuration for the
+        :param prompt_name: Name of the prompt
+        """
+        self._llm_adapter = llm_adapter
+        self._prompt_name = prompt_name
+        # populate the prompt config
+        self._prompt_config = PromptConfig.from_json(f'{prompt_config_dir}/{prompt_name}')
+        # populate the prompt template
+        if file_exists(f'{prompt_config_dir}/{prompt_name}', 'prompt.json'):
+            self._prompt_template = PromptTemplate.from_json(f'{prompt_config_dir}/{prompt_name}')
+        else:
+            self._prompt_template = PromptTemplate.from_text(read_file(file_dir=f'{prompt_config_dir}/{prompt_name}',
+                                                                       file_name='prompt.txt'))
+        # populate the prompt example
+        if file_exists(f'{prompt_config_dir}/{prompt_name}', 'example.json'):
+            self._prompt_example = PromptExample.from_json(f'{prompt_config_dir}/{prompt_name}')
+        self._model = _load_model(llm_adapter, self._prompt_config)
+
+    @property
+    def prompt_name(self) -> str:
+        """
+        :return: Prompt name
+        """
+        return self._prompt_name
+
+    @property
+    def prompt_config(self) -> PromptConfig:
+        """
+        :return: Prompt configuration
+        """
+        return self._prompt_config
+
+    @property
+    def prompt_template(self) -> PromptTemplate:
+        """
+        :return: Prompt template
+        """
+        return self._prompt_template
+
+    @property
+    def prompt_example(self) -> PromptExample:
+        """
+        :return: Prompt example
+        """
+        return self._prompt_example
+
+    @property
+    def model(self):
+        """
+        :return: LLM model
+        """
+        return self._model
+
+
+def _load_model(llm_adapter: LLMAdapter, llm_config: PromptConfig):
     """
-    :param file_dir: Directory in which JSON file is stored
-    :param file_name: Name of the file
-    :return: True if the file exists, False otherwise
+    :param llm_adapter: Adapter for the execution of the LLM
+    :param llm_config: Configuration for the LLM
+    :return: Configured LLM
     """
-    return os.path.exists(os.path.join(file_dir, file_name))
-
-
-def read_file(file_dir: str, file_name: str) -> str:
-    """
-    :param file_dir: Directory in which JSON file is stored
-    :param file_name: Name of the file
-    :return: String representation of the content in the file
-    """
-    try:
-        input_file = Path(os.path.join(file_dir, file_name))
-
-        # test whether the file is a directory
-        if input_file.is_dir():
-            raise IsADirectoryError(f'{input_file} is not a file')
-
-        return input_file.read_text(encoding='utf-8')
-
-    except FileNotFoundError:
-        raise FileNotFoundError(f'{file_name} not found in {file_dir}')
-    except Exception as e:
-        raise IOError(f'Error reading {file_name}: {e}')
-
-
-def read_json_file(file_dir: str, file_name: str) -> dict:
-    """
-    :param file_dir: Directory in which JSON file is stored
-    :param file_name: Name of the JSON file
-    :return: JSON  representation of the content in the JSON file
-    """
-    # test whether the file has the extension .json
-    if not file_name.endswith('.json'):
-        raise TypeError(f'{file_name} is not a JSON file')
-
-    try:
-        input_file = Path(os.path.join(file_dir, file_name))
-
-        # test whether the file is a directory
-        if input_file.is_dir():
-            raise IsADirectoryError(f'{input_file} is not a JSON file')
-
-        with input_file.open('r') as f:
-            data = json.load(f)
-
-        return data
-    except FileNotFoundError:
-        raise FileNotFoundError(f'{file_name} not found in {file_dir}')
-    except json.JSONDecodeError as jde:
-        raise json.JSONDecodeError(msg=f'{file_name} is not a valid JSON file', doc=jde.doc, pos=jde.pos)
-    except Exception as e:
-        raise IOError(f'Error reading {file_name}: {e}')
+    llm = None
+    if llm_adapter == LLMAdapter.LOCAL_LLM_AI:
+        llm = _load_local_from_prompt_config(llm_config)
+    else:
+        raise NotImplementedError(f'LLM adapter {llm_adapter} not supported')
+    return llm

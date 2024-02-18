@@ -65,5 +65,7 @@ def _load_local_from_prompt_config(config: PromptConfig):
         return _load_local_model_from_prompt_config(config)
     elif config.type == 'chat':
         return _load_local_chat_model_from_prompt_config(config)
+    elif config.type == 'embedding':
+        pass
     else:
         raise Exception(f'LLM type {config.type} not supported')
