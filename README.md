@@ -17,6 +17,9 @@
   <a href="https://github.com/langchain-ai/langchain">
     <img src="https://img.shields.io/badge/dependency-langchain-%B2EA00">
   </a>
+  <a href="https://github.com/guardrails-ai/guardrails">
+    <img src="https://img.shields.io/badge/dependency-guardrails_ai-%B2EA00">
+  </a>
   <a href="https://github.com/streamlit/streamlit">
     <img src="https://img.shields.io/badge/dependency-streamlit-%B2EA00">
   </a>
@@ -28,6 +31,7 @@
 - [Description](#description)
 - [Development](#development)
   - [Requirements](#requirements)
+  - [Environment Variables](#environment-variables)
   - [How to prepare the environment](#how-to-prepare-the-environment) 
 - [Disclaimer](#disclaimer)
 
@@ -48,6 +52,12 @@ This library extends LangChain by providing facilities to define configurations,
 * Poetry >= 1.7.0
 * Streamlit >= 1.31.1
 
+### Environment Variables <a name="environment-variables"></a>
+| **Name**               | **Description**                                    | **Default**     |
+|------------------------|----------------------------------------------------|-----------------|
+| `LOG_DIR`              | Location of the logging files                      | logs/           |
+| `LOG_LEVEL`            | Logging level to be applied during execution       | INFO            |
+| `PROMPT_CONFIG_FOLDER` | Location of the Prompt configuration for execution | prompt_configs/ |
 
 ### How to prepare the environment <a name="how-to-prepare-the-environment"></a>
 * Install dependencies

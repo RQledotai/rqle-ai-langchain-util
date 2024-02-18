@@ -1,7 +1,10 @@
 import os
 
+# define location of the prompt config data
+PROMPT_CONFIG_FOLDER = os.getenv('PROMPT_CONFIG_FOLDER', f'{os.getcwd()}/prompt_configs')
+
 # logging configuration
-LOG_LEVEL = os.getenv('LOG_LEVEL', 'DEBUG')
+LOG_LEVEL = os.getenv('LOG_LEVEL', 'INFO')
 LOG_DATE_FORMAT = '%Y-%m-%d %H:%M:%S'
 LOG_DIR = os.getenv('LOG_DIR', f'{os.getcwd()}/logs')
 LOG_CONFIG = {

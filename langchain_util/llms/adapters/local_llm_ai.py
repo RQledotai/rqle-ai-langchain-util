@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv
 
 from langchain.llms import OpenAI, OpenAIChat
+from langchain_community.embeddings.openai import OpenAIEmbeddings
 from langchain_util.prompts.prompt_config import PromptConfig
 
 load_dotenv()
@@ -42,6 +43,17 @@ def _load_local_chat_model_from_prompt_config(config: PromptConfig):
         frequency_penalty=config.parameters.frequency_penalty
     )
     return llm
+
+
+#def _load_local_embedding_from_prompt_config(config: PromptConfig):
+#    """
+#    :param config:
+#    :return:
+#    TODO implement the logic to work with embeddings
+#    """
+#    llm = OpenAIEmbeddings(
+#        base_url=os.getenv('LOCAL_BASE_ENDPOINT'),
+#    )
 
 
 def _load_local_from_prompt_config(config: PromptConfig):
