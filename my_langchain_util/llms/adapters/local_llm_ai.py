@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 from langchain.llms import OpenAI, OpenAIChat
 from langchain_community.embeddings.openai import OpenAIEmbeddings
-from langchain_util.prompts.prompt_config import PromptConfig
+from my_langchain_util.prompts.prompt_config import PromptConfig
 
 load_dotenv()
 

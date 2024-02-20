@@ -1,10 +1,10 @@
-from langchain_util.llms.adapters.llm_adapters import LLMAdapter
-from langchain_util.llms.adapters.local_llm_ai import _load_local_from_prompt_config
-from langchain_util.prompts.prompt_config import PromptConfig
-from langchain_util.prompts.prompt_template import PromptTemplate
-from langchain_util.prompts.prompt_example import PromptExample
-from langchain_util.settings import PROMPT_CONFIG_FOLDER
-from langchain_util.utils.file_util import file_exists, read_file
+from my_langchain_util.llms.adapters.llm_adapters import LLMAdapter
+from my_langchain_util.llms.adapters.local_llm_ai import _load_local_from_prompt_config
+from my_langchain_util.prompts.prompt_config import PromptConfig
+from my_langchain_util.prompts.prompt_template import PromptTemplate
+from my_langchain_util.prompts.prompt_example import PromptExample
+from my_langchain_util.settings import PROMPT_CONFIG_FOLDER
+from my_langchain_util.utils.file_util import file_exists, read_file
 
 
 class LLMMediator:

@@ -2,7 +2,7 @@ from typing import Optional
 
 from pydantic import BaseModel, Field
 
-from langchain_util.utils.file_util import read_file
+from my_langchain_util.utils.file_util import read_file
 
 class ExecutionParameters(BaseModel):
     max_tokens: int = Field(description='Max number of tokens supported by LLM', default=2000)

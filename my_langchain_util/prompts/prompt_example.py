@@ -1,7 +1,7 @@
 from typing import List
 from pydantic import BaseModel, Field
 
-from langchain_util.utils.file_util import read_file
+from my_langchain_util.utils.file_util import read_file
 
 
 class PromptExample(BaseModel):
