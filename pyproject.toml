@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "langchain-util"
+name = "my-langchain-util"
 version = "0.1.0"
 description = "Project providing some additional utils for Langchain."
 authors = ["Quentin Reul <Quentin.H.Reul@gmail.com>"]
