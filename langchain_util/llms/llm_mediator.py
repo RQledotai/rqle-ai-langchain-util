@@ -3,6 +3,7 @@ from langchain_util.llms.adapters.local_llm_ai import _load_local_from_prompt_co
 from langchain_util.prompts.prompt_config import PromptConfig
 from langchain_util.prompts.prompt_template import PromptTemplate
 from langchain_util.prompts.prompt_example import PromptExample
+from langchain_util.settings import PROMPT_CONFIG_FOLDER
 from langchain_util.utils.file_util import file_exists, read_file
 
 
@@ -14,25 +15,24 @@ class LLMMediator:
         """
         return self.__class__.__name__
 
-    def __init__(self, llm_adapter: LLMAdapter, prompt_config_dir: str, prompt_name: str):
+    def __init__(self, llm_adapter: LLMAdapter, prompt_name: str):
         """
         :param llm_adapter: Adapter for the execution of the LLM
-        :param prompt_config_dir: Directory with the configuration for the
         :param prompt_name: Name of the prompt
         """
         self._llm_adapter = llm_adapter
         self._prompt_name = prompt_name
         # populate the prompt config
-        self._prompt_config = PromptConfig.from_json(f'{prompt_config_dir}/{prompt_name}')
+        self._prompt_config = PromptConfig.from_json(f'{PROMPT_CONFIG_FOLDER}/{prompt_name}')
         # populate the prompt template
-        if file_exists(f'{prompt_config_dir}/{prompt_name}', 'prompt.json'):
-            self._prompt_template = PromptTemplate.from_json(f'{prompt_config_dir}/{prompt_name}')
+        if file_exists(f'{PROMPT_CONFIG_FOLDER}/{prompt_name}', 'prompt.json'):
+            self._prompt_template = PromptTemplate.from_json(f'{PROMPT_CONFIG_FOLDER}/{prompt_name}')
         else:
-            self._prompt_template = PromptTemplate.from_text(read_file(file_dir=f'{prompt_config_dir}/{prompt_name}',
+            self._prompt_template = PromptTemplate.from_text(read_file(file_dir=f'{PROMPT_CONFIG_FOLDER}/{prompt_name}',
                                                                        file_name='prompt.txt'))
         # populate the prompt example
-        if file_exists(f'{prompt_config_dir}/{prompt_name}', 'example.json'):
-            self._prompt_example = PromptExample.from_json(f'{prompt_config_dir}/{prompt_name}')
+        if file_exists(f'{PROMPT_CONFIG_FOLDER}/{prompt_name}', 'example.json'):
+            self._prompt_example = PromptExample.from_json(f'{PROMPT_CONFIG_FOLDER}/{prompt_name}')
         self._model = _load_model(llm_adapter, self._prompt_config)
 
     @property
