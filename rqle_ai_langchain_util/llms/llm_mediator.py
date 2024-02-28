@@ -1,10 +1,10 @@
-from my_langchain_util.llms.adapters.llm_adapters import LLMAdapter
-from my_langchain_util.llms.adapters.local_llm_ai import _load_local_from_prompt_config
-from my_langchain_util.prompts.prompt_config import PromptConfig
-from my_langchain_util.prompts.prompt_template import PromptTemplate
-from my_langchain_util.prompts.prompt_example import PromptExample
-from my_langchain_util.settings import PROMPT_CONFIG_FOLDER
-from my_langchain_util.utils.file_util import file_exists, read_file
+from rqle_ai_langchain_util.llms.adapters.llm_adapters import LLMAdapter
+from rqle_ai_langchain_util.llms.adapters import ollama_adapter
+from rqle_ai_langchain_util.prompts.prompt_config import PromptConfig
+from rqle_ai_langchain_util.prompts.prompt_template import PromptTemplate
+from rqle_ai_langchain_util.prompts.prompt_example import PromptExample
+from rqle_ai_langchain_util.settings import PROMPT_CONFIG_FOLDER
+from rqle_ai_langchain_util.utils.file_util import file_exists, read_file
 
 
 class LLMMediator:
@@ -15,24 +15,24 @@ class LLMMediator:
         """
         return self.__class__.__name__
 
-    def __init__(self, llm_adapter: LLMAdapter, prompt_name: str):
+    def __init__(self, llm_adapter: LLMAdapter, prompt_config_name: str):
         """
         :param llm_adapter: Adapter for the execution of the LLM
-        :param prompt_name: Name of the prompt
+        :param prompt_config_name: Name of the prompt
         """
         self._llm_adapter = llm_adapter
-        self._prompt_name = prompt_name
+        self._prompt_name = prompt_config_name
         # populate the prompt config
-        self._prompt_config = PromptConfig.from_json(f'{PROMPT_CONFIG_FOLDER}/{prompt_name}')
+        self._prompt_config = PromptConfig.from_json(f'{PROMPT_CONFIG_FOLDER}/{prompt_config_name}')
         # populate the prompt template
-        if file_exists(f'{PROMPT_CONFIG_FOLDER}/{prompt_name}', 'prompt.json'):
-            self._prompt_template = PromptTemplate.from_json(f'{PROMPT_CONFIG_FOLDER}/{prompt_name}')
+        if file_exists(f'{PROMPT_CONFIG_FOLDER}/{prompt_config_name}', 'prompt.json'):
+            self._prompt_template = PromptTemplate.from_json(f'{PROMPT_CONFIG_FOLDER}/{prompt_config_name}')
         else:
-            self._prompt_template = PromptTemplate.from_text(read_file(file_dir=f'{PROMPT_CONFIG_FOLDER}/{prompt_name}',
+            self._prompt_template = PromptTemplate.from_text(read_file(file_dir=f'{PROMPT_CONFIG_FOLDER}/{prompt_config_name}',
                                                                        file_name='prompt.txt'))
         # populate the prompt example
-        if file_exists(f'{PROMPT_CONFIG_FOLDER}/{prompt_name}', 'example.json'):
-            self._prompt_example = PromptExample.from_json(f'{PROMPT_CONFIG_FOLDER}/{prompt_name}')
+        if file_exists(f'{PROMPT_CONFIG_FOLDER}/{prompt_config_name}', 'example.json'):
+            self._prompt_example = PromptExample.from_json(f'{PROMPT_CONFIG_FOLDER}/{prompt_config_name}')
         self._model = _load_model(llm_adapter, self._prompt_config)
 
     @property
@@ -78,8 +78,8 @@ def _load_model(llm_adapter: LLMAdapter, llm_config: PromptConfig):
     :return: Configured LLM
     """
     llm = None
-    if llm_adapter == LLMAdapter.LOCAL_LLM_AI:
-        llm = _load_local_from_prompt_config(llm_config)
+    if llm_adapter == LLMAdapter.OLLAMA_AI:
+        llm = ollama_adapter.load_ollama_from_prompt_config(llm_config)
     else:
         raise NotImplementedError(f'LLM adapter {llm_adapter} not supported')
     return llm

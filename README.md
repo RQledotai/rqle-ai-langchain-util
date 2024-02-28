@@ -1,7 +1,11 @@
+.footer {
+    text-align: center;
+}
+
 <div align="center">
   <h1>
     <br/>
-    <img src="images/langchain_util.jpg" alt="LangChain Util" width="60"/>
+    <img src="img/langchain_util.jpg" alt="LangChain Util" width="60"/>
     <br/>
     LangChain Utility
   </h1>
@@ -17,8 +21,8 @@
   <a href="https://github.com/langchain-ai/langchain">
     <img src="https://img.shields.io/badge/dependency-langchain-%B2EA00">
   </a>
-  <a href="https://github.com/guardrails-ai/guardrails">
-    <img src="https://img.shields.io/badge/dependency-guardrails_ai-%B2EA00">
+  <a href="https://github.com/protectai/llm-guard">
+    <img src="https://img.shields.io/badge/dependency-llm_guard-%B2EA00">
   </a>
   <a href="https://github.com/streamlit/streamlit">
     <img src="https://img.shields.io/badge/dependency-streamlit-%B2EA00">
@@ -33,6 +37,7 @@
   - [Requirements](#requirements)
   - [Environment Variables](#environment-variables)
   - [How to prepare the environment](#how-to-prepare-the-environment) 
+- [About RQle](#about-rqle-ai)
 - [Disclaimer](#disclaimer)
 
 ## Description <a name="description"></a>
@@ -47,11 +52,13 @@ This library extends LangChain by providing facilities to define configurations,
 
 ### Requirements <a name="requirements"></a>
 * Git
-* Guardrails AI >= 0.4.0
-* LangChain >= 0.1.7
+* llm-guard >= 0.3
+* LangChain >= 0.1
+* [ollama](https://ollama.com/)
 * Python >= 3.11
 * Poetry >= 1.7.0
-* Streamlit >= 1.31.1
+* Streamlit >= 1.31
+
 
 ### Environment Variables <a name="environment-variables"></a>
 | **Name**               | **Description**                                    | **Default**     |
@@ -78,6 +85,9 @@ This library extends LangChain by providing facilities to define configurations,
   ```
   **Note** Report is only generated if all unit test have completed successfully.
 
+## About RQle AI <a name="about-rqle-ai"></a>
+R**RQle AI** believes in the transformative potential of Generative AI. More specifically, it focuses on showcasing real-world applications of how Generative AI can empower individuals and organizations worldwide in addressing customers' "*job to be done*" problems and create value for them.
+
 ## Disclaimer <a name="disclaimer"></a>
 This library and its use of Large Language Models (LLMs) are subject to the **following disclaimers**:
 * LLMs are still under development and may generate inaccurate, incomplete, or biased output;
@@ -86,3 +96,9 @@ This library and its use of Large Language Models (LLMs) are subject to the **fo
 * You are responsible for using the library and LLMs in an ethical and responsible manner.
 
 **By using this library, you acknowledge and agree to these disclaimers and limitations**.
+
+<div style="text-align: center;" markdown="1">
+  <hr/>
+  <img src="img/rqle_ai_logo.jpg" alt="RQle AI" width="60"/>
+  &nbsp; RQle AI&#169; - 2024
+</div>

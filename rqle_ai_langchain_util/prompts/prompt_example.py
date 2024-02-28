@@ -1,7 +1,7 @@
 from typing import List
 from pydantic import BaseModel, Field
 
-from my_langchain_util.utils.file_util import read_file
+from rqle_ai_langchain_util.utils.file_util import read_file
 
 
 class PromptExample(BaseModel):

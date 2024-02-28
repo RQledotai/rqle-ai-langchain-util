@@ -1,3 +1,4 @@
+import base64
 import json
 import os
 from pathlib import Path
@@ -60,4 +61,3 @@ def read_json_file(file_dir: str, file_name: str) -> dict:
         raise json.JSONDecodeError(msg=f'{file_name} is not a valid JSON file', doc=jde.doc, pos=jde.pos)
     except Exception as e:
         raise IOError(f'Error reading {file_name}: {e}')
-    

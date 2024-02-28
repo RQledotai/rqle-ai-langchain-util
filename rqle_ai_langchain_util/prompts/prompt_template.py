@@ -2,7 +2,7 @@ import re
 from typing import List
 from pydantic import BaseModel, Field
 
-from my_langchain_util.utils.file_util import read_file
+from rqle_ai_langchain_util.utils.file_util import read_file
 
 SYSTEM_MESSAGE_PATTERN = r'(?:{{#system~}}|<<#system~>>)\n(.*?)\n(?:{{~/system}}|<<~/system>>)'
 USER_MESSAGE_PATTERN = r'(?:{{#user~}}|<<#user~>>)\n(.*?)\n(?:{{~/user}}|<<~/user>>)'
