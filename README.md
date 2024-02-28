@@ -86,7 +86,7 @@ This library extends LangChain by providing facilities to define configurations,
   **Note** Report is only generated if all unit test have completed successfully.
 
 ## About RQle AI <a name="about-rqle-ai"></a>
-R**RQle AI** believes in the transformative potential of Generative AI. More specifically, it focuses on showcasing real-world applications of how Generative AI can empower individuals and organizations worldwide in addressing customers' "*job to be done*" problems and create value for them.
+**RQle AI** believes in the transformative potential of Generative AI. More specifically, it focuses on showcasing real-world applications of how Generative AI can empower individuals and organizations worldwide in addressing customers' "*job to be done*" problems and create value for them.
 
 ## Disclaimer <a name="disclaimer"></a>
 This library and its use of Large Language Models (LLMs) are subject to the **following disclaimers**:

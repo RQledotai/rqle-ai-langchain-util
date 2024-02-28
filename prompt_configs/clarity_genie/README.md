@@ -1,7 +1,7 @@
 <div align="center">
   <h1>
     <br/>
-    <img src="../../images/claritygenie_logo.jpg" alt="claritygenie_logo" width="60"/>
+    <img src="../../img/claritygenie_logo.jpg" alt="claritygenie_logo" width="60"/>
     <br/>
     ClarityGenie
   </h1>
