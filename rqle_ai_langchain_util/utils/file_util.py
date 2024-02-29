@@ -61,3 +61,22 @@ def read_json_file(file_dir: str, file_name: str) -> dict:
         raise json.JSONDecodeError(msg=f'{file_name} is not a valid JSON file', doc=jde.doc, pos=jde.pos)
     except Exception as e:
         raise IOError(f'Error reading {file_name}: {e}')
+
+
+def read_image(image_path: str) -> base64:
+    """
+    Reads an image from a file and returns its base64-encoded representation
+    :param image_path: the path to the image on the local file system
+    :return: a base64-encoded string representation of the image
+    """
+    if os.path.isdir(image_path):
+        raise IsADirectoryError(f'{image_path} is not a file')
+
+    try:
+        with open(image_path, 'rb') as f:
+            image = f.read()
+            return base64.b64encode(image).decode('utf-8')
+    except FileNotFoundError:
+        raise FileNotFoundError(f'{image_path} not found')
+    except Exception as e:
+        raise IOError(f'Error reading {image_path}: {e}')

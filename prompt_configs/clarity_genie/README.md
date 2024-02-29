@@ -9,12 +9,15 @@
 
 - [Description](#description)
 - [Run ClarityGenie User Interface](#claritygenieui)
-- [About RQle AI](#about-rqle-ai)
+- [About RQle.AI](#about-rqle-ai)
 - [Related Materials](#related-material)
 - [Disclaimer](#disclaimer)
 
 ## Description <a name="description"></a>
 Prompt Engineering
+
+
+**ClarityGenie** was developed by **RQle AI** to enable Generative AI developers to refine their prompts. More specifically, it attempts to address to improve clarity and contextual understanding of prompts.
 
 ## Run ClarityGenie User Interface <a name="claritygenieui"></a>
 To start the User Interface (UI) for ClarityGenie, the following command should be executed
@@ -22,8 +25,8 @@ To start the User Interface (UI) for ClarityGenie, the following command should 
  streamlit run .\rqle_ai_langchain_util\guis\clarity_genie_ui.py
 ```
 
-## About RQle AI <a name="about-rqle-ai"></a>
-**RQle AI** believes in the transformative potential of Generative AI. More specifically, it focuses on showcasing real-world applications of how Generative AI can empower individuals and organizations worldwide in addressing customers' "*job to be done*" problems and create value for them.
+## About RQle.AI <a name="about-rqle-ai"></a>
+[**RQle.AI**](https://www.linkedin.com/company/102641077) believes in the transformative potential of Generative AI. More specifically, it focuses on showcasing real-world applications of how Generative AI can empower individuals and organizations worldwide in addressing customers' "*job to be done*" problems and create value for them.
 
 ## Related Materials <a name="related-material"></a>
 
@@ -33,8 +36,8 @@ generation of ideas and content, the final solution and its implementation remai
 It is important to critically evaluate and revise the AI-generated content to ensure its accuracy, appropriateness, 
 and ethical implications.
 
-<div style="text-align: center;" markdown="1">
+<div style="text-align: center;">
   <hr/>
-  <img src="../../img/rqle_ai_logo.jpg" alt="RQle AI" width="60"/>
-  &nbsp; RQle AI&#169; - 2024
+  <img src="../../img/rqle_ai_logo.jpg" alt="RQle.AI" width="60"/>
+  &nbsp; RQle.AI - 2024
 </div>

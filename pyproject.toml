@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "rqle-ai-langchain-util"
-version = "0.1.0"
+version = "0.1.0a"
 description = "Project providing some additional utils for Langchain."
 authors = ["Quentin Reul <Quentin.H.Reul@gmail.com>"]
 readme = "README.md"
@@ -8,9 +8,10 @@ readme = "README.md"
 [tool.poetry.dependencies]
 langchain = "^0.1"
 llm-guard = "^0.3"
-python = "^3.11"
+python = ">=3.11,<3.12"
 python-dotenv = "^1"
 streamlit = "^1.31"
+traceloop-sdk = "^0.12"
 
 [build-system]
 requires = ["poetry-core"]
