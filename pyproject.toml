@@ -1,9 +1,12 @@
 [tool.poetry]
 name = "rqle-ai-langchain-util"
-version = "0.1.0a"
-description = "Project providing some additional utils for Langchain."
+version = "0.1.0"
+description = "Library facilitating the integration of different LLM providers in LangChain (e.g. `ollama`)."
+license = "Apache-2.0"
 authors = ["Quentin Reul <Quentin.H.Reul@gmail.com>"]
 readme = "README.md"
+homepage = "https://www.linkedin.com/company/102641077"
+keywords = ["langchain", "generative ai", "llm"]
 
 [tool.poetry.dependencies]
 langchain = "^0.1"
@@ -11,7 +14,7 @@ llm-guard = "^0.3"
 python = ">=3.11,<3.12"
 python-dotenv = "^1"
 streamlit = "^1.31"
-traceloop-sdk = "^0.12"
+traceloop-sdk = "^0.13"
 
 [build-system]
 requires = ["poetry-core"]
