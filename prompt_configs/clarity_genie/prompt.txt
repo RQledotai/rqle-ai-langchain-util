@@ -8,13 +8,13 @@ Original prompt in triple backticks
 ## 3. Output
 The revised prompt should address the following aspects:
 * Clarity:
-** Use simple, consise and unambiguous language
-** Avoid jargon or technical terms that the model might not understand
+    * Use simple, concise and unambiguous language
+    * Avoid jargon or technical terms that the model might not understand
 * Specificity:
-** Provide clear instructions about the task or desired output
-** Specify the type of content (e.g. story, blog, code) and any relevant details
+    * Provide clear instructions about the task or desired output
+    * Specify the type of content (e.g. story, blog, code) and any relevant details
 * Context:
-** Provide relevant background information or context for the model
+    * Provide relevant background information or context for the model
 
 Format the output in Markdown
 
