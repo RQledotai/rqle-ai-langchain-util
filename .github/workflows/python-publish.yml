@@ -47,7 +47,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: pypi
-      url: https://pypi.org/p/my-langchain-util
+      url: https://pypi.org/p/rqle-ai-langchain-util
     permissions:
       id-token: write
 
