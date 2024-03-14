@@ -45,6 +45,10 @@ It enables application that:
 * **Are context aware**; i.e. connect a language model to sources context
 * **Reason**; i.e. rely on a language model to reason
 
+This library offers integration with the following Generative AI servers:
+* [Google AI Studio](https://aistudio.google.com/)
+* [ollama](https://ollama.com/) 
+
 This library extends LangChain by providing facilities to define configurations, templates for execution of LLMs.
 
 ## Development <a name="development"></a>
@@ -53,7 +57,6 @@ This library extends LangChain by providing facilities to define configurations,
 * Git
 * llm-guard >= 0.3
 * langchain >= 0.1
-* [ollama](https://ollama.com/)
 * traceloop-sdk >= 0.12
 * Python >= 3.11
 * Poetry >= 1.7.0

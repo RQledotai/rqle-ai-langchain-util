@@ -14,7 +14,7 @@ load_dotenv()
 def _load_ollama_llm_from_prompt_config(config: PromptConfig):
     """
     :param config: the configuration for the LLM execution
-    :return: a OpenAI object configured for a local LLM
+    :return: a Langchain object configured for Ollama LLMs
     """
     llm = Ollama(
         base_url=os.getenv('OLLAMA_ENDPOINT'),
@@ -28,7 +28,7 @@ def _load_ollama_llm_from_prompt_config(config: PromptConfig):
 def _load_ollama_chat_from_prompt_config(config: PromptConfig):
     """
     :param config: the configuration for the LLM execution
-    :return: a OpenAI object configured for a local LLM
+    :return: a Langchain chat object configured for Ollama LLMs
     """
     llm = ChatOllama(
         base_url=os.getenv('OLLAMA_ENDPOINT'),

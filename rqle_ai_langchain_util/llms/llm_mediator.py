@@ -1,5 +1,5 @@
 from rqle_ai_langchain_util.llms.adapters.llm_adapters import LLMAdapter
-from rqle_ai_langchain_util.llms.adapters import ollama_adapter
+from rqle_ai_langchain_util.llms.adapters import google_gemini_adapter,ollama_adapter
 from rqle_ai_langchain_util.prompts.prompt_config import PromptConfig
 from rqle_ai_langchain_util.prompts.prompt_template import PromptTemplate
 from rqle_ai_langchain_util.prompts.prompt_example import PromptExample
@@ -78,7 +78,9 @@ def _load_model(llm_adapter: LLMAdapter, llm_config: PromptConfig):
     :return: Configured LLM
     """
     llm = None
-    if llm_adapter == LLMAdapter.OLLAMA_AI:
+    if llm_adapter == LLMAdapter.GOOGLE_GEMINI:
+        llm = google_gemini_adapter.load_google_gemini_from_prompt_config(llm_config)
+    elif llm_adapter == LLMAdapter.OLLAMA_AI:
         llm = ollama_adapter.load_ollama_from_prompt_config(llm_config)
     else:
         raise NotImplementedError(f'LLM adapter {llm_adapter} not supported')
