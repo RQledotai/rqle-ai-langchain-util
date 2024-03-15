@@ -1,12 +1,12 @@
 class LLMAdapter:
+    AWS_BEDROCK = "aws_bedrock_adapter"
+    AZURE_OPENAI = "azure_openai_adapter"
     GOOGLE_GEMINI = "google_gemini_adapter"
-    HUGGINGFACE_HUB = "huggingface_hub_adapter"
-    HUGGINGFACE_LOCAL = "huggingface_local_adapter"
     OLLAMA_AI = "ollama_adapter"
 
     __all__ = [
+        AWS_BEDROCK,
+        AZURE_OPENAI,
         GOOGLE_GEMINI,
-        HUGGINGFACE_HUB,
-        HUGGINGFACE_LOCAL,
         OLLAMA_AI
     ]

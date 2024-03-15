@@ -1,25 +1,30 @@
 <div align="center">
   <h1>
     <br/>
-    <img src="../../img/techtype_rocket_logo.jpg" alt="techtype_rocket_logo" width="60"/>
+    <img src="../../../img/techtype_rocket_logo.jpg" alt="techtype_rocket_logo" width="60"/>
     <br/>
     TechType Rocket
   </h1>
 </div>
 
 - [Description](#description)
-- [Run TechType Rocket User Interface](#techtype_rocket_ui)
+- [Run TechType Rocket User Interface](#techtype-rocket-ui)
+- [Known Limitations](#known-limitations)
 - [About RQle.AI](#about-rqle-ai)
 - [Related Materials](#related-material)
 - [Disclaimer](#disclaimer)
 
 ## Description <a name="description"></a>
+Struggling to break into the tech blogging world? TechType Rocket is your one-stop platform designed to equip aspiring writers with the skills and guidance to confidently create engaging tech blogs for diverse audiences.
 
-## Run TechType Rocket User Interface <a name="techtype_rocket_ui"></a>
+## Run TechType Rocket User Interface <a name="techtype-rocket-ui"></a>
 To start the User Interface (UI) for TechType Rocket, the following command should be executed
 ```
  streamlit run .\rqle_ai_langchain_util\examples\techtype_rocket\techtype_rocket_ui.py
 ```
+
+## Known Limitations <a name="known-limitations"></a>
+* Google Gemini has some limitations with meeting exact word count in its output (see [reddit](https://www.reddit.com/r/Bard/comments/1ao3oyi/gemini_is_absolutely_horrible_when_you_tell_it_to/))
 
 ## About RQle.AI <a name="about-rqle-ai"></a>
 [**RQle.AI**](https://www.linkedin.com/company/102641077) believes in the transformative potential of Generative AI. More specifically, it focuses on 
@@ -36,6 +41,6 @@ and ethical implications.
 
 <div style="text-align: center;">
   <hr/>
-  <img src="../../img/rqle_ai_logo.jpg" alt="RQle.AI" width="60"/>
+  <img src="../../../img/rqle_ai_logo.jpg" alt="RQle.AI" width="60"/>
   &nbsp; RQle.AI - 2024
 </div>

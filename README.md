@@ -46,6 +46,8 @@ It enables application that:
 * **Reason**; i.e. rely on a language model to reason
 
 This library offers integration with the following Generative AI servers:
+* [AWS Bedrock](https://us-west-2.console.aws.amazon.com/bedrock/home)
+* [Azure OpenAI](https://azure.microsoft.com/en-us/products/ai-services/openai-service)
 * [Google AI Studio](https://aistudio.google.com/)
 * [ollama](https://ollama.com/) 
 

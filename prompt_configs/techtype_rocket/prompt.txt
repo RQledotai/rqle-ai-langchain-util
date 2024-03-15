@@ -1,30 +1,28 @@
-# Task:
-Generate a compelling and informative blog post tailored to the specified audience and topics.
+**Inputs:**
+* `target_audience` (str) = {target_audience} - A string describing the intended readers of the post (e.g., "business leaders").
+* `target_word_count` (int) = {target_word_count} - The minimum desired word count for the entire blog post.
+* `topics` (List[str]) = {topics} - A list of strings representing the key subjects the blog post should cover (e.g., ["social media marketing", "content strategy"]).
 
-# Input:
-`target_audience` = {target_audience} - Describe the intended audience for the blog post (e.g. 'technology leader', 'business leader, 'novice')
-`word_count` = {word_count} - Specify the desired length of the blog post in words.
-`topics` = {topics} - Comma-separated list of strings representing the key subjects covered in the blog post.
+**Outputs:**
+* **title**: A creative and engaging title for the blog post, using the `topics` and targeting the `target_audience`. The title should be under 100 characters.
+* **content**: This will be the entire written content of your blog post in Markdown format, with a total word count as close as possible to the `target_word_count`. It will include:
+    * **introduction:** A brief introduction that provides context and introduces each topic in the topics list.
+    * For each topic in `topics`:
+        * **tagline:** A concise and impactful phrase summarizing the main point of the section.
+        * **text:** A list of informative and engaging paragraphs written in active voice, using transitions and examples.
+            * The number of paragraphs and their length will be adjusted to achieve the target word count while providing sufficient details without repetition. Aim for at least 3 well-structured paragraphs with multiple sentences per paragraph.
+    * **conclusion:** A concluding section that summarizes the key takeaways from the post and includes a Call to Action (CTA) related to the topics discussed.
+* **seo_tags:** A list of 5 relevant SEO tags related to the `topics` to improve search engine discoverability.
 
-# Output:
-* **Title**: Craft a captivating title (under 100 characters) that incorporates the provided `topics` and resonates with the `target audience`.
-* **Introduction**: Brief overview of each topic, introducing the content of the blog.
-* **Dive deep**:
-    * For each topic in your list:
-        * **Subheading**: Write a short, clear phrase that captures the essence of the topic.
-        * **Content**: Fill this section with informative paragraphs. Use active voice and transition words for a smooth flow. Each paragraph should explore a specific aspect of the topic, with clear explanations and examples to illustrate your points.
-* **Conclusion**:
-    * **Conclusion:** Briefly summarize the key takeaways from each section.
-    * **Call to action:** Tell your readers what you want them to do next, something related to the blog's topics.
-* **SEO Tags**: Generate 5 relevant keywords that will help people discover your post when they search online.
-
-**Formatting**:
+**Formatting:**
 * Markdown format for proper content structure (refer to [Markdown Guide][markdown_guide]).
 
-**Keep in mind:**
-* Make it good! The post should be well-written, original, and insightful.
-* Match the tone to your audience and topics (formal for business leaders, casual for plant enthusiasts).
-* No lists here! Use paragraphs to explain things.
-* *Prioritize achieving the target word count as closely as possible* while delivering comprehensive content.
+**Considerations:**
+* I will prioritize achieving the `target_word_count` as closely as possible.
+    * If the initial generation falls short, I will strategically expand on complex topics or add details to specific sections.
+    * If the initial generation exceeds the target, I will condense sections while maintaining clarity and key information.
+* **Avoid using bullet points or numbered lists.**
+* The content should be well-written, original, and insightful.
+* The writing style and tone should be appropriate for the `target_audience` and the `topics` covered.
 
 [markdown_guide]: https://www.markdownguide.org

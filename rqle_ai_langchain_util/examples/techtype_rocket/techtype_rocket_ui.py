@@ -31,8 +31,8 @@ output.subheader('Generated Blog', divider='rainbow')
 with input:
     with st.form(key='blog_input'):
         st.subheader('Enter Blog Details', divider='rainbow')
-        reading_time = st.number_input(label='Blog length (words)', min_value=500, step=50,
-                                       help='Enter how long you want blog to be in terms of number of words')
+        target_word_count = st.number_input(label='Blog length (words)', min_value=500, step=100,
+                                            help='Enter how long you want blog to be in terms of number of words')
         target_audience = st.selectbox(label='Target Audience', options=('Technology Leaders', 'Business Leaders', 'Novice'))
         # example of topics for debugging purposes
         # monetization of premium large language models when integrated in commercial products
@@ -48,16 +48,18 @@ with input:
             else:
                 with output:
                     with st.spinner('Generating blog...'):
-                        tech_type_rocket = TechTypeRocket(config_folder='techtype_rocket')
-                        generated_blog = tech_type_rocket.invoke_chain(reading_time=reading_time,
-                                                                       target_audience=target_audience,
-                                                                       topics=topics)
-                        generated_blog_data = generated_blog['text']
-                        markdown_tab, text_tab = st.tabs(['WYSIWYG', 'Markdown'])
-                        with markdown_tab:
-                            st.markdown(generated_blog_data)
-                        with text_tab:
-                            st.text(generated_blog_data)
-
+                        try:
+                            tech_type_rocket = TechTypeRocket(config_folder='techtype_rocket')
+                            generated_blog = tech_type_rocket.invoke_chain(target_word_count=target_word_count,
+                                                                           target_audience=target_audience,
+                                                                           topics=topics)
+                            generated_blog_data = generated_blog['text']
+                            markdown_tab, text_tab = st.tabs(['WYSIWYG', 'Markdown'])
+                            with markdown_tab:
+                                st.markdown(generated_blog_data)
+                            with text_tab:
+                                st.text(generated_blog_data)
+                        except Exception as e:
+                            st.error(f'Error generating blog\n{e}', icon='🚨')
 # information about the footer of the application (including logo and years)
 st.markdown(body=gui_utils.set_page_footer(), unsafe_allow_html=True)
