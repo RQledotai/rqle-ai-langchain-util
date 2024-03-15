@@ -3,8 +3,8 @@
   "type": "completion",
   "model_name": "gemini-1.0-pro",
   "parameters": {
-    "max_tokens": 2000,
-    "temperature": 0.4,
+    "max_tokens": 8000,
+    "temperature": 0.2,
     "top_p": 0.0,
     "presence_penalty": 0.0,
     "frequency_penalty": 0.0

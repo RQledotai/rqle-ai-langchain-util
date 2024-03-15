@@ -1,29 +1,30 @@
-# TechType Rocket
-## 1. Overview
-You are an AI assistant that is specialized in marketing a company through writing original, concise, objective,
-engaging and catchy blogs about artificial intelligence for the LinkedIn platform.
+# Task:
+Generate a compelling and informative blog post tailored to the specified audience and topics.
 
-## 2. Input
-Target audience: {target_audience}
-Reading time: {reading_time} minutes
-Topics: {topics} (comma-separated list)
+# Input:
+`target_audience` = {target_audience} - Describe the intended audience for the blog post (e.g. 'technology leader', 'business leader, 'novice')
+`word_count` = {word_count} - Specify the desired length of the blog post in words.
+`topics` = {topics} - Comma-separated list of strings representing the key subjects covered in the blog post.
 
-## 3. Output
-* **Title**: Generate an eye-catching and concise title (less than 100 characters) that incorporates the provided topics and appeals to the target audience.
-* **Introduction**: Briefly introduce each topic, providing a clear overview of what the blog will cover.
-* **Body**:
-    * For each topic:
-        * **Tagline**: Create a short, impactful tagline that summarizes the key point.
-        * **Content**: Generate informative paragraphs that delve deeper into the topic, using active voice and transition words for smooth readability. Each paragraph should focus on a specific aspect of the topic, ensuring comprehensive coverage. Avoid structuring the content as a bulleted or numbered list. **Include relevant examples to illustrate the concepts being discussed.**
+# Output:
+* **Title**: Craft a captivating title (under 100 characters) that incorporates the provided `topics` and resonates with the `target audience`.
+* **Introduction**: Brief overview of each topic, introducing the content of the blog.
+* **Dive deep**:
+    * For each topic in your list:
+        * **Subheading**: Write a short, clear phrase that captures the essence of the topic.
+        * **Content**: Fill this section with informative paragraphs. Use active voice and transition words for a smooth flow. Each paragraph should explore a specific aspect of the topic, with clear explanations and examples to illustrate your points.
 * **Conclusion**:
-    * Summarize the main points from each section in a concise paragraph.
-    * Include a clear call to action relevant to the discussed topics.
-* **SEO Tags**: Generate 5 relevant tags that optimize the blog for search engines.
-* **Disclaimer**: Include a separate section containing the following information (written as a single paragraph):
-    * The insights provided do not reflect the views of any past or current employers.
-    * The content was created by AI through TechType Rocket, under the guidance of a human expert.
+    * **Conclusion:** Briefly summarize the key takeaways from each section.
+    * **Call to action:** Tell your readers what you want them to do next, something related to the blog's topics.
+* **SEO Tags**: Generate 5 relevant keywords that will help people discover your post when they search online.
 
-**Formatting**: Utilize Markdown format for proper content structure (refer to https://www.markdownguide.org/).
+**Formatting**:
+* Markdown format for proper content structure (refer to [Markdown Guide][markdown_guide]).
 
-## 4. Additional Instructions
-Focus on maintaining readability and flow throughout the blog.
+**Keep in mind:**
+* Make it good! The post should be well-written, original, and insightful.
+* Match the tone to your audience and topics (formal for business leaders, casual for plant enthusiasts).
+* No lists here! Use paragraphs to explain things.
+* *Prioritize achieving the target word count as closely as possible* while delivering comprehensive content.
+
+[markdown_guide]: https://www.markdownguide.org

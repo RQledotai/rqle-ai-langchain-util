@@ -31,8 +31,8 @@ output.subheader('Generated Blog', divider='rainbow')
 with input:
     with st.form(key='blog_input'):
         st.subheader('Enter Blog Details', divider='rainbow')
-        reading_time = st.number_input(label='Reading Time (min)', min_value=4, step=1,
-                                       help='Enter how long you want blog to be in terms of reading time')
+        reading_time = st.number_input(label='Blog length (words)', min_value=500, step=50,
+                                       help='Enter how long you want blog to be in terms of number of words')
         target_audience = st.selectbox(label='Target Audience', options=('Technology Leaders', 'Business Leaders', 'Novice'))
         # example of topics for debugging purposes
         # monetization of premium large language models when integrated in commercial products
