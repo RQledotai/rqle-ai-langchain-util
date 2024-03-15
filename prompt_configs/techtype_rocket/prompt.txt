@@ -1,11 +1,11 @@
 **Inputs:**
 * `target_audience` (str) = {target_audience} - A string describing the intended readers of the post (e.g., "business leaders").
 * `target_word_count` (int) = {target_word_count} - The minimum desired word count for the entire blog post.
-* `topics` (List[str]) = {topics} - A list of strings representing the key subjects the blog post should cover (e.g., ["social media marketing", "content strategy"]).
+* `topics` (List[str]) = {topics} - A list of strings representing the key subjects the blog post should cover (e.g., ["generative AI", "AI engineering"]).
 
 **Outputs:**
 * **title**: A creative and engaging title for the blog post, using the `topics` and targeting the `target_audience`. The title should be under 100 characters.
-* **content**: This will be the entire written content of your blog post in Markdown format, with a total word count as close as possible to the `target_word_count`. It will include:
+* **content**: This will be the entire written content of your blog post in Markdown format, with a total word count falling within 10% of `target_word_count`. It will include:
     * **introduction:** A brief introduction that provides context and introduces each topic in the topics list.
     * For each topic in `topics`:
         * **tagline:** A concise and impactful phrase summarizing the main point of the section.
@@ -18,11 +18,10 @@
 * Markdown format for proper content structure (refer to [Markdown Guide][markdown_guide]).
 
 **Considerations:**
-* I will prioritize achieving the `target_word_count` as closely as possible.
-    * If the initial generation falls short, I will strategically expand on complex topics or add details to specific sections.
-    * If the initial generation exceeds the target, I will condense sections while maintaining clarity and key information.
-* **Avoid using bullet points or numbered lists.**
-* The content should be well-written, original, and insightful.
-* The writing style and tone should be appropriate for the `target_audience` and the `topics` covered.
+* **Prioritize Clarity and Comprehensiveness**: Focus on providing clear and informative explanations for each topic, even if it means exceeding the` `target_word_count` slightly and falling within 10%.
+* **Content Structure**: Utilize subheadings, bolded key points, or other approved strategies to enhance readability without resorting to bullet points.
+* **Avoid Repetition**: Strive to deliver new information in each paragraph while maintaining a cohesive flow.
+* **Target Word Count as a Guideline**: The `target_word_count` serves as a guide, and achieving it is desirable but not the sole priority.
+* **Writing style and tone** should be appropriate for the `target_audience` and the `topics` covered.
 
 [markdown_guide]: https://www.markdownguide.org

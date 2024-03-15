@@ -17,6 +17,11 @@
 ## Description <a name="description"></a>
 Struggling to break into the tech blogging world? TechType Rocket is your one-stop platform designed to equip aspiring writers with the skills and guidance to confidently create engaging tech blogs for diverse audiences.
 
+With TechType Rocket, you'll be ready to:
+* Publish **high-quality tech blogs** that resonate with your target audience.
+* Establish yourself as a **credible voice** in the tech community.
+* Build a loyal following eager to consume your **insightful content**.
+
 ## Run TechType Rocket User Interface <a name="techtype-rocket-ui"></a>
 To start the User Interface (UI) for TechType Rocket, the following command should be executed
 ```
@@ -24,7 +29,8 @@ To start the User Interface (UI) for TechType Rocket, the following command shou
 ```
 
 ## Known Limitations <a name="known-limitations"></a>
-* Google Gemini has some limitations with meeting exact word count in its output (see [reddit](https://www.reddit.com/r/Bard/comments/1ao3oyi/gemini_is_absolutely_horrible_when_you_tell_it_to/))
+* Word count limit is not respected by the LLM
+  * For Google Gemini, this is a wll-documented limitations (see [reddit](https://www.reddit.com/r/Bard/comments/1ao3oyi/gemini_is_absolutely_horrible_when_you_tell_it_to/))
 
 ## About RQle.AI <a name="about-rqle-ai"></a>
 [**RQle.AI**](https://www.linkedin.com/company/102641077) believes in the transformative potential of Generative AI. More specifically, it focuses on 
