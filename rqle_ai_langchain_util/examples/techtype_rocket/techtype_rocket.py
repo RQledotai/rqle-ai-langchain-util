@@ -27,7 +27,7 @@ class TechTypeRocket():
     def __init__(self, config_folder: str):
         # configure the LLM to be executed
         self.config_folder = config_folder
-        self.llm_mediator = LLMMediator(LLMAdapter.GOOGLE_GEMINI, self.config_folder)
+        self.llm_mediator = LLMMediator(LLMAdapter.AWS_BEDROCK, self.config_folder)
 
     def load_chain(self):
         """
@@ -36,7 +36,7 @@ class TechTypeRocket():
         try:
             # configure the prompt
             prompt = PromptTemplate(template=self.llm_mediator.prompt_template.prompt,
-                                    input_variables=['reading_time', 'target_audience', 'topics'])
+                                    input_variables=['target_word_count', 'target_audience', 'topics'])
             logger.debug(f'Generated prompt: {prompt}')
 
             # return the LLM
@@ -45,9 +45,9 @@ class TechTypeRocket():
             logger.error(f'Error loading chain: {self.config_folder}\n{e}', exc_info=True)
             raise e
 
-    def invoke_chain(self, reading_time: int, target_audience: str, topics: str):
+    def invoke_chain(self, target_word_count: int, target_audience: str, topics: str):
         """
-        :param reading_time: the length of the blog in terms of reading time
+        :param target_word_count: the targeted length of the blog in terms of number of words
         :param target_audience: the target audience of the blog
         :param topics: the topics of the blog
         :return: the output from executing the LLM chain
@@ -56,7 +56,7 @@ class TechTypeRocket():
             # load the chain to be executed
             chain = self.load_chain()
             # execute the chain
-            output = chain.invoke({'reading_time': reading_time,
+            output = chain.invoke({'target_word_count': target_word_count,
                                    'target_audience': target_audience,
                                    'topics': topics})
             logger.debug(f'Output from TechType Rocket: {output}')
@@ -72,7 +72,11 @@ if __name__ == '__main__':
         # create an instance of the class
         tech_type_rocket = TechTypeRocket(config_folder='techtype_rocket')
         # invoke the chain
-        output = tech_type_rocket.invoke_chain(reading_time=3, target_audience='test', topics='test')
+        output = tech_type_rocket.invoke_chain(target_word_count=2000,
+                                               target_audience='Business Leaders',
+                                               topics='Discuss how generative AI is democratizing the adoption of AI, '
+                                                      'Include a discussion on how generative AI removes barriers '
+                                                      'provided by discriminative AI')
     except Exception as e:
         logger.error(f'Error executing TechType Rocket\n{e}', exc_info=True)
     finally:
