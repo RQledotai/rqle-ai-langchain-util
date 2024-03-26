@@ -26,6 +26,18 @@ streamlit = "^1.32"
 traceloop-sdk = "^0.13"
 transformers = "^4.36"
 
+[tool.poetry.group.test.dependencies]
+coverage = "*"
+mock = "*"
+parameterized = "*"
+pytest = "^7"
+pytest-mock = "*"
+
+[tool.coverage.run]
+omit = [
+    "tests/*"
+]
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

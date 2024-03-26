@@ -1,16 +1,19 @@
+# Task:
+Generate a blog post about "{topics}" targeting {target_audience} with an estimated reading time of {target_reading_time} minutes.
+
 **Inputs:**
-* `target_audience` (str) = {target_audience} - A string describing the intended readers of the post (e.g., "business leaders").
-* `target_word_count` (int) = {target_word_count} - The minimum desired word count for the entire blog post.
+* `target_audience` (str) = {target_audience} - A string describing the intended readers of the post (e.g., ["business leaders", "technical leaders"]).
+* `target_reading_time` (int) = {target_reading_time} - The desired estimated reading time for the entire blog post in minutes. This will be used to determine the appropriate content length.
 * `topics` (List[str]) = {topics} - A list of strings representing the key subjects the blog post should cover (e.g., ["generative AI", "AI engineering"]).
 
 **Outputs:**
 * **title**: A creative and engaging title for the blog post, using the `topics` and targeting the `target_audience`. The title should be under 100 characters.
-* **content**: This will be the entire written content of your blog post in Markdown format, with a total word count falling within 10% of `target_word_count`. It will include:
+* **content**: This will be the entire written content of your blog post in Markdown format, with a length optimized for the target reading time. It will include:
     * **introduction:** A brief introduction that provides context and introduces each topic in the topics list.
     * For each topic in `topics`:
-        * **tagline:** A concise and impactful phrase summarizing the main point of the section.
-        * **text:** A list of informative and engaging paragraphs written in active voice, using transitions and examples.
-            * The number of paragraphs and their length will be adjusted to achieve the target word count while providing sufficient details without repetition. Aim for at least 3 well-structured paragraphs with multiple sentences per paragraph.
+        * **tagline:** A concise, persuasive and impactful phrase summarizing the main point of the section.
+        * **text:** A series of informative and engaging paragraphs written in active voice, using transitions and examples.
+            * The number of paragraphs and their length will be adjusted to achieve the target reading time while providing sufficient details without repetition. Aim for at least 3 well-structured paragraphs with multiple sentences per paragraph.
     * **conclusion:** A concluding section that summarizes the key takeaways from the post and includes a Call to Action (CTA) related to the topics discussed.
 * **seo_tags:** A list of 5 relevant SEO tags related to the `topics` to improve search engine discoverability.
 
@@ -18,10 +21,10 @@
 * Markdown format for proper content structure (refer to [Markdown Guide][markdown_guide]).
 
 **Considerations:**
-* **Prioritize Clarity and Comprehensiveness**: Focus on providing clear and informative explanations for each topic, even if it means exceeding the` `target_word_count` slightly and falling within 10%.
+* **Prioritize Clarity and Comprehensiveness**: Focus on providing clear and informative explanations for each topic, even if it means exceeding the estimated reading time slightly.
 * **Content Structure**: Utilize subheadings, bolded key points, or other approved strategies to enhance readability without resorting to bullet points.
 * **Avoid Repetition**: Strive to deliver new information in each paragraph while maintaining a cohesive flow.
-* **Target Word Count as a Guideline**: The `target_word_count` serves as a guide, and achieving it is desirable but not the sole priority.
+* **Estimated Completion Token as a Guideline**: The `target_reading_time` * 200 as completion tokens is a guide, and delivering valuable content is the top priority.
 * **Writing style and tone** should be appropriate for the `target_audience` and the `topics` covered.
 
 [markdown_guide]: https://www.markdownguide.org

@@ -22,6 +22,17 @@ With TechType Rocket, you'll be ready to:
 * Establish yourself as a **credible voice** in the tech community.
 * Build a loyal following eager to consume your **insightful content**.
 
+To limit the generation of toxic or nonsensical content, we leverage the `llm-guard` library with the following guardrails:
+* Input Validation:
+  * Topics do not include prompt injection
+  * Topics are expressed in English
+  * Topics do not include toxic language
+* Output Validation:
+  * Generated text is not nonsensical / gibberish
+  * Generated text is relevant to the topics provided by users
+  * Generated text does not include negative sentiment content
+  * Generated text does not include toxic language
+
 ## Run TechType Rocket User Interface <a name="techtype-rocket-ui"></a>
 To start the User Interface (UI) for TechType Rocket, the following command should be executed
 ```
@@ -31,6 +42,7 @@ To start the User Interface (UI) for TechType Rocket, the following command shou
 ## Known Limitations <a name="known-limitations"></a>
 * Word count limit is not respected by the LLM
   * For Google Gemini, this is a wll-documented limitations (see [reddit](https://www.reddit.com/r/Bard/comments/1ao3oyi/gemini_is_absolutely_horrible_when_you_tell_it_to/))
+* Identified an issue with the integration of Meta LlAMA2 when hosted on AWS Bedrock
 
 ## About RQle.AI <a name="about-rqle-ai"></a>
 [**RQle.AI**](https://www.linkedin.com/company/102641077) believes in the transformative potential of Generative AI. More specifically, it focuses on 
