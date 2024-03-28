@@ -50,6 +50,7 @@ This library offers integration with the following Generative AI servers:
 * [Azure OpenAI](https://azure.microsoft.com/en-us/products/ai-services/openai-service)
 * [Google AI Studio](https://aistudio.google.com/)
 * [ollama](https://ollama.com/) 
+* [Oracle Cloud Infrastructure AI](https://www.oracle.com/artificial-intelligence/ai-services/)
 
 This library extends LangChain by providing facilities to define configurations, templates for execution of LLMs.
 
