@@ -31,4 +31,4 @@ For most providers, our library supports "chat", "completion" and "embeddings" a
 **Note** Some models include additional parameters, such `presence_penalty` or `frequency_penalty`.
 
 ## Supported Adapters
-* [OCI Generative AI Service](docs/integrations/adapters/oci_adapter.ipynb)
+* [OCI Generative AI Service](adapters/oci_adapter.ipynb)

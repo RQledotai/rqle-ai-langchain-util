@@ -14,4 +14,4 @@ This library offers integration with the following Generative AI servers:
 This library extends LangChain by providing facilities to define configurations, templates for execution of LLMs.
 
 ## Get started
-[Here’s](/docs/get_started/installation) how to install library, set up your environment, and start building.
+[Here’s](installation.md) how to install library, set up your environment, and start building.
