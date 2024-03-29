@@ -16,8 +16,7 @@ logger = logging.getLogger(__name__)
 
 load_dotenv()
 
-
-class ClarityGenie:
+class TechTypeRocket():
 
     def info(self):
         """
@@ -26,13 +25,9 @@ class ClarityGenie:
         return self.__class__.__name__
 
     def __init__(self, config_folder: str):
-        """
-        Initialise the ClarityGenie class
-        :param config_folder: the folder with the prompt configuration
-        """
         # configure the LLM to be executed
         self.config_folder = config_folder
-        self.llm_mediator = LLMMediator(LLMAdapter.OLLAMA_AI, self.config_folder)
+        self.llm_mediator = LLMMediator(LLMAdapter.OCI_AI, self.config_folder)
 
     def load_chain(self):
         """
@@ -41,7 +36,7 @@ class ClarityGenie:
         try:
             # configure the prompt
             prompt = PromptTemplate(template=self.llm_mediator.prompt_template.prompt,
-                                    input_variables=['prompt'])
+                                    input_variables=['target_reading_time', 'target_audience', 'topics'])
             logger.debug(f'Generated prompt: {prompt}')
 
             # return the LLM
@@ -50,17 +45,21 @@ class ClarityGenie:
             logger.error(f'Error loading chain: {self.config_folder}\n{e}', exc_info=True)
             raise e
 
-    def invoke_chain(self, input_prompt: str):
+    def invoke_chain(self, target_reading_time: int, target_audience: str, topics: str):
         """
-        :param input_prompt: the input prompt to be revised
+        :param target_reading_time: the targeted length of the blog in terms of reading time
+        :param target_audience: the target audience of the blog
+        :param topics: the topics of the blog
         :return: the output from executing the LLM chain
         """
         try:
             # load the chain to be executed
             chain = self.load_chain()
             # execute the chain
-            output = chain.invoke({'prompt': input_prompt})
-            logger.debug(f'Output from ClarityGenie: {output}')
+            output = chain.invoke({'target_reading_time': target_reading_time,
+                                   'target_audience': target_audience,
+                                   'topics': topics})
+            logger.debug(f'Output from TechType Rocket: {output}')
             return output
         except Exception as e:
             logger.error(f'Error executing chain: {self.config_folder}\n{e}', exc_info=True)
@@ -70,28 +69,17 @@ class ClarityGenie:
 if __name__ == '__main__':
     start = time()
     try:
-        # instantiate and the ClarityGenie
-        cg = ClarityGenie('clarity_genie')
-        output = cg.invoke_chain("""
-        Given a job description in triple backticks for {job_title} at {company}, your goal is to re-write the user's past experience delimited by <<<>>> to match the job-description.
-
-The revised resume should include:
-- two to three sentences that shine a line on the most relevant / impressive achievements based on the past 10 years
-- rewrite past experience with 3-5 bullet per role to make it more actionable
-- showcase my 10 most relevant skills that matches the job description
-
-Do NOT use any information beyond the one provided by past experience.
-
-Format the answer in JSON.
-{format_instructions}
-
-job description: ```{job_description}```
-past experience: <<<{experience_profile}>>>
-Output:
-        """)
+        # create an instance of the class
+        tech_type_rocket = TechTypeRocket(config_folder='techtype_rocket')
+        # invoke the chain
+        output = tech_type_rocket.invoke_chain(target_reading_time=5,
+                                               target_audience='Business Leaders',
+                                               topics='Discuss how generative AI is democratizing the adoption of AI, '
+                                                      'Include a discussion on how generative AI removes barriers '
+                                                      'provided by discriminative AI')
     except Exception as e:
-        pass
+        logger.error(f'Error executing TechType Rocket\n{e}', exc_info=True)
     finally:
         # calculate elapsed time
         total_time = round((time() - start) / 60, 3)
-        logger.info(f'Elapsed time to execute {cg.info()}: {total_time} min')
+        logger.info(f'Elapsed time to execute TechType Rocket: {total_time} min')

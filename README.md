@@ -32,6 +32,7 @@
 </p>
 
 - [Description](#description)
+- [Documentation](#documentation)
 - [Development](#development)
   - [Requirements](#requirements)
   - [Environment Variables](#environment-variables)
@@ -45,7 +46,17 @@ It enables application that:
 * **Are context aware**; i.e. connect a language model to sources context
 * **Reason**; i.e. rely on a language model to reason
 
+This library offers integration with the following Generative AI servers:
+* [AWS Bedrock](https://us-west-2.console.aws.amazon.com/bedrock/home)
+* [Azure OpenAI](https://azure.microsoft.com/en-us/products/ai-services/openai-service)
+* [Google AI Studio](https://aistudio.google.com/)
+* [ollama](https://ollama.com/) 
+* [Oracle Cloud Infrastructure AI](https://www.oracle.com/artificial-intelligence/ai-services/)
+
 This library extends LangChain by providing facilities to define configurations, templates for execution of LLMs.
+
+## Documentation <a name="documentation"></a>
+To get started refer to the [documentation](docs/get_started/introduction.md).
 
 ## Development <a name="development"></a>
 
@@ -53,7 +64,6 @@ This library extends LangChain by providing facilities to define configurations,
 * Git
 * llm-guard >= 0.3
 * langchain >= 0.1
-* [ollama](https://ollama.com/)
 * traceloop-sdk >= 0.12
 * Python >= 3.11
 * Poetry >= 1.7.0
@@ -99,6 +109,6 @@ This library and its use of Large Language Models (LLMs) are subject to the **fo
 
 <div style="text-align: center;">
   <hr/>
-  <img src="img/rqle_ai_logo.jpg" alt="RQle.AI" width="60"/>
+  <img src="img/rqle_ai_logo_alt.jpeg" alt="RQle.AI" width="60"/>
   &nbsp; RQle.AI - 2024
 </div>

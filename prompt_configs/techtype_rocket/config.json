@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "type": "completion",
+  "model_name": "cohere.command",
+  "parameters": {
+    "max_tokens": 4000,
+    "temperature": 0.2,
+    "top_p": 0.1,
+    "presence_penalty": 0.0,
+    "frequency_penalty": 0.0
+  }
+}
