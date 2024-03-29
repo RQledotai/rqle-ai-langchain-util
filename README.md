@@ -32,6 +32,7 @@
 </p>
 
 - [Description](#description)
+- [Documentation](#documentation)
 - [Development](#development)
   - [Requirements](#requirements)
   - [Environment Variables](#environment-variables)
@@ -50,8 +51,12 @@ This library offers integration with the following Generative AI servers:
 * [Azure OpenAI](https://azure.microsoft.com/en-us/products/ai-services/openai-service)
 * [Google AI Studio](https://aistudio.google.com/)
 * [ollama](https://ollama.com/) 
+* [Oracle Cloud Infrastructure AI](https://www.oracle.com/artificial-intelligence/ai-services/)
 
 This library extends LangChain by providing facilities to define configurations, templates for execution of LLMs.
+
+## Documentation <a name="documentation"></a>
+To get started refer to the [documentation](docs/get_started/introduction.md).
 
 ## Development <a name="development"></a>
 
@@ -104,6 +109,6 @@ This library and its use of Large Language Models (LLMs) are subject to the **fo
 
 <div style="text-align: center;">
   <hr/>
-  <img src="img/rqle_ai_logo.jpg" alt="RQle.AI" width="60"/>
+  <img src="img/rqle_ai_logo_alt.jpeg" alt="RQle.AI" width="60"/>
   &nbsp; RQle.AI - 2024
 </div>

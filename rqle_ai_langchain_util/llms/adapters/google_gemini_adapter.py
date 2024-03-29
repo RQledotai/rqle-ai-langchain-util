@@ -55,9 +55,9 @@ def load_google_gemini_from_prompt_config(config: PromptConfig):
     :return: a LangChain object configured for Google Gemini LLMs
     """
     if config.type == 'chat':
-        return _load_google_gemini_llm_from_prompt_config(config)
-    elif config.type == 'completion':
         return _load_google_gemini_chat_from_prompt_config(config)
+    elif config.type == 'completion':
+        return _load_google_gemini_llm_from_prompt_config(config)
     elif config.type == 'embeddings':
         return _load_google_gemini_embeddings_from_prompt_config(config)
     else:
