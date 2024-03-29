@@ -32,6 +32,7 @@
 </p>
 
 - [Description](#description)
+- [Documentation](#documentation)
 - [Development](#development)
   - [Requirements](#requirements)
   - [Environment Variables](#environment-variables)
@@ -53,6 +54,9 @@ This library offers integration with the following Generative AI servers:
 * [Oracle Cloud Infrastructure AI](https://www.oracle.com/artificial-intelligence/ai-services/)
 
 This library extends LangChain by providing facilities to define configurations, templates for execution of LLMs.
+
+## Documentation <a name="documentation"></a>
+To get started refer to the [documentation](docs/get_started/introduction.md).
 
 ## Development <a name="development"></a>
 

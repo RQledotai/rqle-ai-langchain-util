@@ -32,3 +32,9 @@ For most providers, our library supports "chat", "completion" and "embeddings" a
 
 ## Supported Adapters
 * [OCI Generative AI Service](adapters/oci_adapter.ipynb)
+
+<div style="text-align: center;">
+  <hr/>
+  <img src="../../img/rqle_ai_logo_alt.jpeg" alt="RQle.AI" width="60"/>
+  &nbsp; RQle.AI - 2024
+</div>

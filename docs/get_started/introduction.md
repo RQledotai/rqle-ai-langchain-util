@@ -15,3 +15,9 @@ This library extends LangChain by providing facilities to define configurations,
 
 ## Get started
 [Here’s](installation.md) how to install library, set up your environment, and start building.
+
+<div style="text-align: center;">
+  <hr/>
+  <img src="../../img/rqle_ai_logo_alt.jpeg" alt="RQle.AI" width="60"/>
+  &nbsp; RQle.AI - 2024
+</div>
