@@ -1,6 +1,6 @@
 from rqle_ai_langchain_util.llms.adapters.llm_adapters import LLMAdapter
 from rqle_ai_langchain_util.llms.adapters import (aws_bedrock_adapter, azure_openai_adapter, google_gemini_adapter,
-                                                  ollama_adapter)
+                                                  ollama_adapter, oci_ai_adapter)
 from rqle_ai_langchain_util.prompts.prompt_config import PromptConfig
 from rqle_ai_langchain_util.prompts.prompt_template import PromptTemplate
 from rqle_ai_langchain_util.prompts.prompt_example import PromptExample
@@ -87,6 +87,8 @@ def _load_model(llm_adapter: LLMAdapter, llm_config: PromptConfig):
         llm = google_gemini_adapter.load_google_gemini_from_prompt_config(llm_config)
     elif llm_adapter == LLMAdapter.OLLAMA_AI:
         llm = ollama_adapter.load_ollama_from_prompt_config(llm_config)
+    elif llm_adapter == LLMAdapter.OCI_AI:
+        llm = oci_ai_adapter.load_oci_ai_llm_from_prompt_config(llm_config)
     else:
         raise NotImplementedError(f'LLM adapter {llm_adapter} not supported')
     return llm

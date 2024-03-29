@@ -2,7 +2,7 @@ import streamlit as st
 
 from rqle_ai_langchain_util.utils.file_util import read_image
 
-COMPANY_LOGO_PATH = 'img/rqle_ai_logo.jpg'
+COMPANY_LOGO_PATH = 'img/rqle_ai_logo_alt.jpeg'
 COMPANY_NAME = 'RQle.AI'
 
 
