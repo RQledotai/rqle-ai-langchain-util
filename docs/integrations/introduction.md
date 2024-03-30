@@ -8,6 +8,9 @@ This library integrate with the following LLM providers:
 
 All LLMs implement the Runnable interface, which comes with default implementations of all methods, ie. ainvoke, batch, abatch, stream, astream. This gives all LLMs basic support for async, streaming and batch as provided by the [LangChain library](https://python.langchain.com/docs/integrations/llms/).
 
+| LLM Provider | Chat | Completion | Embeddings |
+|--------------|------|------------|------------|
+
 ## Get started
 This library relies on a configuration folder that contains:
 * a JSON file with the configuration for the chosen LLM.
