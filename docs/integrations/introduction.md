@@ -8,8 +8,13 @@ This library integrate with the following LLM providers:
 
 All LLMs implement the Runnable interface, which comes with default implementations of all methods, ie. ainvoke, batch, abatch, stream, astream. This gives all LLMs basic support for async, streaming and batch as provided by the [LangChain library](https://python.langchain.com/docs/integrations/llms/).
 
-| LLM Provider | Chat | Completion | Embeddings |
-|--------------|------|------------|------------|
+| LLM Provider               | Chat | Completion | Embeddings |
+|----------------------------|------|------------|------------|
+| AWS Bedrock                | ✅    | ✅          | ✅          |
+| AZure OpenAI               | ✅    | ✅          | ✅          |
+| Google AI Studio           | ✅    | ✅          | ✅          |
+| OCI Generative AI Services | ❌    | ✅          | ✅          |
+| Ollama                     | ✅    | ✅          | ✅          |
 
 ## Get started
 This library relies on a configuration folder that contains:
@@ -31,7 +36,7 @@ The JSON format is as follows:
 ```
 For most providers, our library supports "chat", "completion" and "embeddings" as `type` of LLMs. Similarly, `model_name` should be replaced by the name of the LLM supported by the provider (e.g. 'gemma:7b').
 
-**Note** Some models include additional parameters, such `presence_penalty` or `frequency_penalty`.
+**Note** Some models (e.g. AI21 Jurassic) include additional parameters, such `presence_penalty` or `frequency_penalty`.
 
 ## Supported Adapters
 * [OCI Generative AI Service](adapters/oci_adapter.ipynb)
