@@ -39,7 +39,7 @@ The table below provides insights on the type of operations supported by each LL
 | OCI Generative AI Services | ❌*   | ✅          | ✅          |
 | Ollama                     | ✅    | ✅          | ✅          |
 
-* ⚠️**Note** This is mostly caused by the fact that no chat interface have yet been created for this LLM provider.
+* ⚠️**Note** This is mostly caused by the fact that no chat interface have yet been created for this LLM provider in LangChain.
 
 As this library primarily focuses on the configuration of various LLMs, they support the LangChain Runnable interface, which comes with default implementations of all methods, i.e. `ainvoke`, `batch`, `abatch`, `stream`, `astream`. This gives all LLMs basic support for async, streaming and batch as provided by the [LangChain library](https://python.langchain.com/docs/integrations/llms/).
 

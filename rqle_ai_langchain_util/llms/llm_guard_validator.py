@@ -1,3 +1,5 @@
+import re
+
 from llm_guard.input_scanners import (
     Language as InputLanguage,
     PromptInjection as InputPromptInjection,
@@ -43,21 +45,16 @@ def validate_llm_input(input: str, languages: list[str] = None) -> (bool, str):
 
 
 def validate_llm_output(prompt: str, output: str) -> (bool, str):
-    '''
+    """
     :param prompt: the prompt text used by LLM
     :param output: the output text from the LLM
     :return: a tuple of boolean and an error message
-    '''
+    """
     # check whether the output is gibberish or nonsensical content
     gibberish_scanner = OutputGibberish(threshold=0.5, match_type=OutputGibberishMatchType.FULL)
     gibberish_sanitized_output, gibberish_is_valid, gibberish_risk_score = gibberish_scanner.scan(prompt=prompt, output=output)
     if not gibberish_is_valid:
         return (False, f'Output is gibberish with {gibberish_risk_score} confidence.')
-    # check whether the output is relevant to the prompt
-    relevance_scanner = OutputRelevance(threshold=0.5)
-    relevance_sanitized_output, relevance_is_valid, relevance_risk_score = relevance_scanner.scan(prompt=prompt, output=output)
-    if not relevance_is_valid:
-        return (False, f'Output is not relevant to the prompt with {relevance_risk_score} confidence.')
     # check whether the output includes text with negative sentiment
     sentiment_scanner = OutputSentiment(threshold=0)
     sentiment_sanitized_output, sentiment_is_valid, sentiment_risk_score = sentiment_scanner.scan(prompt=prompt, output=output)
@@ -69,6 +66,19 @@ def validate_llm_output(prompt: str, output: str) -> (bool, str):
     if not toxic_is_valid:
         return (False, f'Output contains toxic content with {toxic_risk_score} confidence.')
     return (True, '')
+
+
+def validate_llm_output_relevance(prompt: str, output: str) -> float:
+    '''
+    :param prompt: the prompt text used by LLM
+    :param output: the output text from the LLM
+    :return: the relevancy score of the text compaired to prompt
+    '''
+    # check whether the output is relevant to the prompt
+    relevance_scanner = OutputRelevance(threshold=0.0)
+    relevance_sanitized_output, relevance_is_valid, relevance_risk_score = relevance_scanner.scan(prompt=prompt,
+                                                                                                  output=output)
+    return relevance_risk_score
 
 
 def validate_llm_output_reading_time(prompt: str, output: str, reading_time: int = 5) -> (bool, str):
@@ -84,3 +94,18 @@ def validate_llm_output_reading_time(prompt: str, output: str, reading_time: int
         return (False, sanitized_output)
     else:
         return (True, output)
+
+
+def estimate_reading_time(text: str, WPM: int = 200) -> int:
+    """
+    Calculate the estimated reading time for a given text based on the average words per minute.
+
+    :param text: The input text for which the reading time needs to be estimated.
+    :param WPM: The average words per minute for calculating the reading time. Default is 200.
+    :return: The estimated reading time in minutes as an integer
+    """
+    total_words = len(re.findall(r'\w+', text))
+    time_minute = total_words // WPM + 1
+    if time_minute == 0:
+        time_minute = 1
+    return time_minute

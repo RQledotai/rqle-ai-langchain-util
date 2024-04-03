@@ -1,30 +1,21 @@
-# Task:
-Generate a blog post about "{topics}" targeting {target_audience} with an estimated reading time of {target_reading_time} minutes.
+# Input
+* **Reading Time**: The blog post should be approximately {target_reading_time} minutes long, providing enough depth and detail to thoroughly cover the topic without being overly lengthy.
+* **Target Audience**: The tone of the blog post should be tailored to appeal to {target_audience}. The writing should be clear, authoritative, and engaging, using language and examples that resonate with this particular audience.
+* **Topic**: The main topic to be discussed in the blog post is {topic}.
+* **Keywords**: Integrate the list of keywords provided below naturally throughout the text to improve search engine visibility and facilitate discovery of your blog post:
+{keywords}
 
-**Inputs:**
-* `target_audience` (str) = {target_audience} - A string describing the intended readers of the post (e.g., ["business leaders", "technical leaders"]).
-* `target_reading_time` (int) = {target_reading_time} - The desired estimated reading time for the entire blog post in minutes. This will be used to determine the appropriate content length.
-* `topics` (List[str]) = {topics} - A list of strings representing the key subjects the blog post should cover (e.g., ["generative AI", "AI engineering"]).
+# Task
+Generate a compelling and informative blog post based on the above information, including:
+* Title: A catchy title that captures the essence of the generated blog and entice readers to click.
+* Structured text with different sections: Divide your content into clear sections with subheadings to improve readability and organization. Each section should delve deeper into different aspects of the main topic.
+* SEO keywords: Based on the generated blog, provide a new list of SEO keywords that could help with discoverability and search engine optimization.
 
-**Outputs:**
-* **title**: A creative and engaging title for the blog post, using the `topics` and targeting the `target_audience`. The title should be under 100 characters.
-* **content**: This will be the entire written content of your blog post in Markdown format, with a length optimized for the target reading time. It will include:
-    * **introduction:** A brief introduction that provides context and introduces each topic in the topics list.
-    * For each topic in `topics`:
-        * **tagline:** A concise, persuasive and impactful phrase summarizing the main point of the section.
-        * **text:** A series of informative and engaging paragraphs written in active voice, using transitions and examples.
-            * The number of paragraphs and their length will be adjusted to achieve the target reading time while providing sufficient details without repetition. Aim for at least 3 well-structured paragraphs with multiple sentences per paragraph.
-    * **conclusion:** A concluding section that summarizes the key takeaways from the post and includes a Call to Action (CTA) related to the topics discussed.
-* **seo_tags:** A list of 5 relevant SEO tags related to the `topics` to improve search engine discoverability.
+# Considerations
+* Remember to tailor the tone and level of detail to the target audience. Ensure the post is engaging and provides valuable insights on the chosen topic.
+* Do not include any explanations or apologies in your responses.
 
-**Formatting:**
+# Formatting
 * Markdown format for proper content structure (refer to [Markdown Guide][markdown_guide]).
-
-**Considerations:**
-* **Prioritize Clarity and Comprehensiveness**: Focus on providing clear and informative explanations for each topic, even if it means exceeding the estimated reading time slightly.
-* **Content Structure**: Utilize subheadings, bolded key points, or other approved strategies to enhance readability without resorting to bullet points.
-* **Avoid Repetition**: Strive to deliver new information in each paragraph while maintaining a cohesive flow.
-* **Estimated Completion Token as a Guideline**: The `target_reading_time` * 200 as completion tokens is a guide, and delivering valuable content is the top priority.
-* **Writing style and tone** should be appropriate for the `target_audience` and the `topics` covered.
 
 [markdown_guide]: https://www.markdownguide.org
