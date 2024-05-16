@@ -16,7 +16,8 @@ logger = logging.getLogger(__name__)
 
 load_dotenv()
 
-class TechTypeRocket():
+
+class TechTypeRocket:
 
     def info(self):
         """
@@ -27,7 +28,7 @@ class TechTypeRocket():
     def __init__(self, config_folder: str):
         # configure the LLM to be executed
         self.config_folder = config_folder
-        self.llm_mediator = LLMMediator(LLMAdapter.OCI_AI, self.config_folder)
+        self.llm_mediator = LLMMediator(LLMAdapter.OLLAMA_AI, self.config_folder)
 
     def load_chain(self):
         """
