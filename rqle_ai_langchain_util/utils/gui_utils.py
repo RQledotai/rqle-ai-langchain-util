@@ -1,3 +1,5 @@
+import plotly.express as px
+import plotly.graph_objects as go
 import streamlit as st
 
 from rqle_ai_langchain_util.utils.file_util import read_image
@@ -106,3 +108,42 @@ def set_page_footer(years: str = '2024') -> str:
         </h5>
     </footer>
     """
+
+
+def make_donut_graph(expected: int, actual: int):
+    """
+    Create a donut chart comparing expected vs actual.
+    :param expected: the expected value
+    :param actual: the actual / estimated value
+    :return: a donut graph showing the comparison
+    """
+    # determine which color palette relate to different donut charts
+    green_color_palette = ['#27AE60', '#12783D']
+    orange_color_palette = ['#F39C12', '#875A12']
+    red_color_palette = ['#E74C3C', '#781F16']
+
+    # calculate the deviation between actual vs expected & decide colors to be used
+    deviation_percentage = (actual / expected) * 100
+    if (deviation_percentage >= 65):
+        chart_color = green_color_palette
+    elif 35 < deviation_percentage < 65:
+        chart_color = orange_color_palette
+    else:
+        chart_color = red_color_palette
+
+    labels = ['Expected', 'Actual']
+    percents = [100, deviation_percentage]
+
+    # create the donut chart
+    fig = go.Figure()
+    fig.add_trace(go.Pie(labels=labels, values=percents, rotation=150, hole=0.3, marker_colors=chart_color))
+    fig.add_trace(go.Pie(labels=labels, values=percents, rotation=150, hole=0.3, marker_colors=chart_color))
+    fig.update_traces()
+    fig.update_traces(textinfo='none', title=f'{actual} min', hoverinfo='none')
+    fig.update(layout_showlegend=False)
+
+    return fig
+
+
+
+
