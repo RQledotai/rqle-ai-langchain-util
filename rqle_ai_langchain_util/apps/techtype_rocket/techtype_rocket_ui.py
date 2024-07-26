@@ -3,9 +3,9 @@ from streamlit_tags import st_tags
 from PIL import Image
 
 from rqle_ai_langchain_util import settings
-from rqle_ai_langchain_util.utils import gui_utils
-from rqle_ai_langchain_util.llms import llm_guard_validator
-from rqle_ai_langchain_util.examples.techtype_rocket.techtype_rocket import TechTypeRocket
+from rqle_ai_langchain_util.utils import gui_util
+#from rqle_ai_langchain_util.llms import llm_guard_validator
+from rqle_ai_langchain_util.apps.techtype_rocket.techtype_rocket import TechTypeRocket
 
 import logging
 from logging.config import dictConfig
@@ -24,10 +24,10 @@ st.set_page_config(page_title=APPLICATION_NAME, page_icon=APPLICATION_LOGO,
                    layout='wide', initial_sidebar_state='collapsed')
 
 # information about / help component of the application
-st.sidebar = gui_utils.set_page_sidebar(application_description=APPLICATION_DESCRIPTION)
+st.sidebar = gui_util.set_page_sidebar(application_description=APPLICATION_DESCRIPTION)
 
 # set the logo / title of the application
-st.markdown(body=gui_utils.set_page_header(application_name=APPLICATION_NAME,
+st.markdown(body=gui_util.set_page_header(application_name=APPLICATION_NAME,
                                            application_logo_path=APPLICATION_LOGO_PATH,
                                            background_color='#334246',
                                            text_color='#FFFFFF'),
@@ -64,11 +64,11 @@ with ((input)):
                     with st.spinner('Generating blog...'):
                         try:
                             # check whether guard rails should be checked on the input
-                            if guard_rails_enabled:
-                                input_is_valid, input_error_msg = llm_guard_validator.validate_llm_input(input=topic)
-                                # raise an exception if any of the guard rails are violated
-                                if not input_is_valid:
-                                    raise IOError(input_error_msg)
+                            #if guard_rails_enabled:
+                            #    input_is_valid, input_error_msg = llm_guard_validator.validate_llm_input(input=topic)
+                            #    # raise an exception if any of the guard rails are violated
+                            #    if not input_is_valid:
+                            #        raise IOError(input_error_msg)
                             # execute the LLM to generate the blog
                             tech_type_rocket = TechTypeRocket(config_folder='techtype_rocket')
                             generated_blog = tech_type_rocket.invoke_chain(target_reading_time=target_reading_time,
@@ -77,12 +77,12 @@ with ((input)):
                                                                            keywords=keywords)
                             generated_blog_data = generated_blog['text']
                             # check whether guard rails should be checked on the output
-                            if guard_rails_enabled:
-                                output_is_valid, output_error_msg = llm_guard_validator.validate_llm_output(prompt=f'Generate a blog post about "{topic}" targeting {target_audience} '
-                                                                                                                   f'with an estimated reading time of {target_reading_time} minutes.',
-                                                                                                            output=generated_blog_data)
-                                if not output_is_valid:
-                                    raise IOError(output_error_msg)
+                            #if guard_rails_enabled:
+                            #    output_is_valid, output_error_msg = llm_guard_validator.validate_llm_output(prompt=f'Generate a blog post about "{topic}" targeting {target_audience} '
+                            #                                                                                       f'with an estimated reading time of {target_reading_time} minutes.',
+                            #                                                                                output=generated_blog_data)
+                            #    if not output_is_valid:
+                            #        raise IOError(output_error_msg)
                             markdown_tab, text_tab = st.tabs(['WYSIWYG', 'Markdown'])
                             with markdown_tab:
                                 st.markdown(generated_blog_data)
@@ -91,14 +91,14 @@ with ((input)):
                             # analytics component
                             with analytics:
                                 st.subheader('Reading Time')
-                                estimated_reading_time = llm_guard_validator.estimate_reading_time(generated_blog_data)
-                                logger.debug(f'Estimated reading time of generated blog is {estimated_reading_time} minutes,'
-                                             f'while the target was {target_reading_time} minutes.')
-                                chart = gui_utils.make_donut_graph(expected=target_reading_time, actual=estimated_reading_time)
-                                st.plotly_chart(chart, use_container_width=True)
+                                #estimated_reading_time = llm_guard_validator.estimate_reading_time(generated_blog_data)
+                                #logger.debug(f'Estimated reading time of generated blog is {estimated_reading_time} minutes,'
+                                #             f'while the target was {target_reading_time} minutes.')
+                                #chart = gui_util.make_donut_graph(expected=target_reading_time, actual=estimated_reading_time)
+                                #st.plotly_chart(chart, use_container_width=True)
                         except Exception as e:
                             st.error(f'An error occurred while generating the blog: {e}')
                             logger.error(f'Error occurred while generating the blog: {e}')
 
 # information about the footer of the application (including logo and years)
-st.markdown(body=gui_utils.set_page_footer(), unsafe_allow_html=True)
+st.markdown(body=gui_util.set_page_footer(), unsafe_allow_html=True)

@@ -71,11 +71,12 @@ To get started refer to the [documentation](docs/get_started/introduction.md).
 
 
 ### Environment Variables <a name="environment-variables"></a>
-| **Name**               | **Description**                                    | **Default**     |
-|------------------------|----------------------------------------------------|-----------------|
-| `LOG_DIR`              | Location of the logging files                      | logs/           |
-| `LOG_LEVEL`            | Logging level to be applied during execution       | INFO            |
-| `PROMPT_CONFIG_FOLDER` | Location of the Prompt configuration for execution | prompt_configs/ |
+| **Name**                 | **Description**                                                                | **Default**     |
+|--------------------------|--------------------------------------------------------------------------------|-----------------|
+| `LOG_DIR`                | Location of the logging files                                                  | logs/           |
+| `LOG_LEVEL`              | Logging level to be applied during execution                                   | INFO            |
+| `AUDIO_TMP_FOLDER`       | Location of temporary audio files when transcribing videos                     | tmp/audio/      |
+| `PROMPT_CONFIG_FOLDER`   | Location of the Prompt configuration for execution                             | prompt_configs/ |
 
 ### How to prepare the environment <a name="how-to-prepare-the-environment"></a>
 * Install dependencies

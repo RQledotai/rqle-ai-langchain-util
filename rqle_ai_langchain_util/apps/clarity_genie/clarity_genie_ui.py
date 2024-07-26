@@ -1,8 +1,8 @@
 import streamlit as st
 from PIL import Image
 
-from rqle_ai_langchain_util.utils import gui_utils
-from rqle_ai_langchain_util.examples.clarity_genie.clarity_genie import ClarityGenie
+from rqle_ai_langchain_util.utils import gui_util
+from rqle_ai_langchain_util.apps.clarity_genie.clarity_genie import ClarityGenie
 
 APPLICATION_LOGO_PATH = 'img/claritygenie_logo.jpg'
 APPLICATION_LOGO = Image.open(APPLICATION_LOGO_PATH)

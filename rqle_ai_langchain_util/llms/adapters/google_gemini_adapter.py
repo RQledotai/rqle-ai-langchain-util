@@ -1,9 +1,11 @@
 import os
 from dotenv import load_dotenv
 
-from langchain_google_genai import GoogleGenerativeAI, ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
+from langchain_google_genai.llms import GoogleGenerativeAI
+from langchain_google_genai.chat_models import ChatGoogleGenerativeAI
+from langchain_google_genai.embeddings import GoogleGenerativeAIEmbeddings
 
-from rqle_ai_langchain_util.prompts.prompt_config import PromptConfig
+from rqle_ai_langchain_util.prompts.prompt_config import PromptConfig, PromptTypeEnum
 
 load_dotenv()
 
@@ -49,16 +51,15 @@ def _load_google_gemini_embeddings_from_prompt_config(config: PromptConfig):
     )
     return llm
 
+
 def load_google_gemini_from_prompt_config(config: PromptConfig):
     """
     :param config: the configuration for the LLM execution
     :return: a LangChain object configured for Google Gemini LLMs
     """
-    if config.type == 'chat':
+    if config.type == PromptTypeEnum.chat:
         return _load_google_gemini_chat_from_prompt_config(config)
-    elif config.type == 'completion':
+    elif config.type == PromptTypeEnum.completion:
         return _load_google_gemini_llm_from_prompt_config(config)
-    elif config.type == 'embeddings':
+    elif config.type == PromptTypeEnum.embedding:
         return _load_google_gemini_embeddings_from_prompt_config(config)
-    else:
-        raise NotImplementedError(f'LLM type {config.type} not supported')

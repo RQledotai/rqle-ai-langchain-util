@@ -1,6 +1,9 @@
 import os
 
-# define location of the prompt config data
+# define storage location of temporary audio files
+AUDIO_TMP_FOLDER = os.getenv('AUDIO_TMP_FOLDER', f'{os.getcwd()}/tmp/audio')
+
+# define storage location of the prompt config data
 PROMPT_CONFIG_FOLDER = os.getenv('PROMPT_CONFIG_FOLDER', f'{os.getcwd()}/prompt_configs')
 
 # logging configuration

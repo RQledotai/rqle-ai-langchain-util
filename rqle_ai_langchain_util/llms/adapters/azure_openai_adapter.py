@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 
 from langchain_openai import AzureOpenAI, AzureChatOpenAI, AzureOpenAIEmbeddings
 
-from rqle_ai_langchain_util.prompts.prompt_config import PromptConfig
+from rqle_ai_langchain_util.prompts.prompt_config import PromptConfig, PromptTypeEnum
 
 load_dotenv()
 
@@ -52,11 +52,9 @@ def load_azure_openai_from_prompt_config(config: PromptConfig):
     :param config: the configuration for the LLM execution
     :return: a LangChain object configured for Azure OpenAI LLMs
     """
-    if config.type == 'chat':
+    if config.type == PromptTypeEnum.chat:
         return _load_azure_openai_chat_from_prompt_config(config)
-    elif config.type == 'completion':
+    elif config.type == PromptTypeEnum.completion:
         return _load_azure_openai_llm_from_prompt_config(config)
-    elif config.type == 'embeddings':
+    elif config.type == PromptTypeEnum.embedding:
         return _load_azure_openai_embeddings_from_prompt_config(config)
-    else:
-        raise NotImplementedError(f'LLM type {config.type} not supported')

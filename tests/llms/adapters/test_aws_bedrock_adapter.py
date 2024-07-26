@@ -1,13 +1,12 @@
 from unittest import TestCase, main
 from parameterized import parameterized
 
-from langchain_community.llms.bedrock import Bedrock
-from langchain_community.chat_models.bedrock import BedrockChat
-from langchain_community.embeddings.bedrock import BedrockEmbeddings
+from langchain_aws.llms.bedrock import BedrockLLM
+from langchain_aws.chat_models.bedrock import ChatBedrock
+from langchain_aws.embeddings.bedrock import BedrockEmbeddings
 
-from rqle_ai_langchain_util.llms.adapters.aws_bedrock_adapter import load_aws_bedrock_from_prompt_config, \
-    _get_model_kwargs
-from rqle_ai_langchain_util.prompts.prompt_config import PromptConfig, ExecutionParameters
+from rqle_ai_langchain_util.llms.adapters.aws_bedrock_adapter import load_aws_bedrock_from_prompt_config, _get_model_kwargs
+from rqle_ai_langchain_util.prompts.prompt_config import ExecutionParameters, PromptConfig, PromptTypeEnum
 
 
 class TestAWSBedrockAdapter(TestCase):
@@ -33,21 +32,15 @@ class TestAWSBedrockAdapter(TestCase):
             _get_model_kwargs(config)
 
     @parameterized.expand([
-        ['chat', BedrockChat],
-        ['completion', Bedrock],
-        ['embeddings', BedrockEmbeddings]
+        [PromptTypeEnum.chat, ChatBedrock],
+        [PromptTypeEnum.completion, BedrockLLM],
+        [PromptTypeEnum.embedding, BedrockEmbeddings]
     ])
-    def test_load_aws_bedrock_from_prompt_config(self, llm_type: str, llm_class):
+    def test_load_aws_bedrock_from_prompt_config(self, llm_type: PromptTypeEnum, llm_class):
         config = PromptConfig(type=llm_type, model_name='mistral',
                               parameters=ExecutionParameters(temperature=0.5, top_p=0.5, max_tokens=100))
         result = load_aws_bedrock_from_prompt_config(config)
         self.assertIsInstance(result, llm_class)
-
-    def test_load_aws_bedrock_from_prompt_config_error(self):
-        config = PromptConfig(type='invalid', model_name='test_model',
-                              parameters=ExecutionParameters(temperature=0.5, top_p=0.5, max_tokens=100))
-        with self.assertRaises(NotImplementedError):
-            load_aws_bedrock_from_prompt_config(config)
 
 
 if __name__ == '__main__':

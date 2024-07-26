@@ -1,4 +1,7 @@
-class LLMAdapter:
+from enum import Enum
+
+
+class LLMAdapter(str, Enum):
     AWS_BEDROCK = "aws_bedrock_adapter"
     AZURE_OPENAI = "azure_openai_adapter"
     GOOGLE_GEMINI = "google_gemini_adapter"
