@@ -5,7 +5,7 @@ from rqle_ai_langchain_util.utils.file_util import read_file
 
 
 class PromptExample(BaseModel):
-    schema: int = Field(description='Schema version', default=1)
+    version: int = Field(description='Schema version', default=1)
     examples: List[dict] = Field(description='Examples of the prompt', default_factory=list)
 
     @staticmethod
