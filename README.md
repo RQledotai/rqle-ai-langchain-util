@@ -63,11 +63,11 @@ To get started refer to the [documentation](docs/get_started/introduction.md).
 ### Requirements <a name="requirements"></a>
 * Git
 * llm-guard >= 0.3
-* langchain >= 0.1
-* traceloop-sdk >= 0.12
-* Python >= 3.11
+* langchain >= 0.2
+* traceloop-sdk >= 0.13
+* Python = 3.11 
 * Poetry >= 1.7.0
-* streamlit >= 1.31
+* streamlit >= 1.32
 
 
 ### Environment Variables <a name="environment-variables"></a>
