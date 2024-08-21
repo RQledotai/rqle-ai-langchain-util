@@ -1,7 +1,7 @@
 {
   "version": 1,
   "type": "chat",
-  "model_name": "gemma2:latest",
+  "model_name": "model",
   "parameters": {
     "max_tokens": 2000,
     "temperature": 0.3,

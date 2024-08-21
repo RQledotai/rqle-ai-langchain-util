@@ -10,7 +10,7 @@ ASSISTANT_MESSAGE_PATTERN = r'(?:{{#assistant~}}|<<#assistant~>>)\n(.*?)\n(?:{{~
 
 
 class PromptTemplate(BaseModel):
-    schema: int = Field(description='Schema version', default=1)
+    version: int = Field(description='Schema version', default=1)
     prompt: str = Field(description='Prompt', default='')
     system_message: str = Field(description='System message sets the initial context or '
                                             'instructions to the LLM on how to behave.', default='')

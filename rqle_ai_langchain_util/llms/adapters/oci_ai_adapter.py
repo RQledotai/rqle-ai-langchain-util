@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 
 from langchain_community.llms import OCIGenAI
 from langchain_community.embeddings import OCIGenAIEmbeddings
-from rqle_ai_langchain_util.prompts.prompt_config import PromptConfig
+from rqle_ai_langchain_util.prompts.prompt_config import PromptConfig, PromptTypeEnum
 
 load_dotenv()
 
@@ -44,9 +44,9 @@ def load_oci_ai_llm_from_prompt_config(config: PromptConfig):
     :param config: the configuration for the LLM execution
     :return: a LangChain object configured for Oracle Cloud AI LLMs
     """
-    if config.type == 'completion':
+    if config.type == PromptTypeEnum.completion:
         return _load_oci_ai_llm_from_prompt_config(config)
-    elif config.type == 'embeddings':
+    elif config.type == PromptTypeEnum.embedding:
         return _load_oci_ai_embeddings_from_prompt_config(config)
     else:
         raise NotImplementedError(f'LLM type {config.type} not supported')

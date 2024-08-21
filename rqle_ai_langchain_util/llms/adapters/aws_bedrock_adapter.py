@@ -1,14 +1,16 @@
-# Information about the different providers supported by AWS Bedrock - https://us-west-2.console.aws.amazon.com/bedrock/home
+# Information about the different providers supported by AWS Bedrock -
+# https://us-west-2.console.aws.amazon.com/bedrock/home
 import os
 from dotenv import load_dotenv
 
-from langchain_community.llms.bedrock import Bedrock
-from langchain_community.chat_models.bedrock import BedrockChat
-from langchain_community.embeddings.bedrock import BedrockEmbeddings
+from langchain_aws.llms.bedrock import BedrockLLM
+from langchain_aws.chat_models.bedrock import ChatBedrock
+from langchain_aws.embeddings.bedrock import BedrockEmbeddings
 
-from rqle_ai_langchain_util.prompts.prompt_config import PromptConfig
+from rqle_ai_langchain_util.prompts.prompt_config import PromptConfig, PromptTypeEnum
 
 load_dotenv()
+
 
 def _get_model_kwargs(config: PromptConfig):
     """
@@ -65,7 +67,7 @@ def _load_aws_bedrock_llm_from_prompt_config(config: PromptConfig):
     # transform the model configuration in the appropriate dictionary
     model_kwargs = _get_model_kwargs(config)
     # create a new Bedrock LLM object
-    llm = Bedrock(
+    llm = BedrockLLM(
         credentials_profile_name=os.environ.get("BWB_PROFILE_NAME"),
         region_name=os.environ.get("BWB_REGION_NAME"),
         endpoint_url=os.environ.get("BWB_ENDPOINT_URL"),
@@ -83,7 +85,7 @@ def _load_aws_bedrock_chat_from_prompt_config(config: PromptConfig):
     # transform the model configuration in the appropriate dictionary
     model_kwargs = _get_model_kwargs(config)
     # create a new Bedrock LLM object
-    llm = BedrockChat(
+    llm = ChatBedrock(
         credentials_profile_name=os.environ.get("BWB_PROFILE_NAME"),
         region_name=os.environ.get("BWB_REGION_NAME"),
         endpoint_url=os.environ.get("BWB_ENDPOINT_URL"),
@@ -112,11 +114,9 @@ def load_aws_bedrock_from_prompt_config(config: PromptConfig):
     :param config: the configuration for the LLM execution
     :return: a LangChain object configured for AWS Bedrock LLMs
     """
-    if config.type == 'chat':
+    if config.type == PromptTypeEnum.chat:
         return _load_aws_bedrock_chat_from_prompt_config(config)
-    elif config.type == 'completion':
+    elif config.type == PromptTypeEnum.completion:
         return _load_aws_bedrock_llm_from_prompt_config(config)
-    elif config.type == 'embeddings':
+    elif config.type == PromptTypeEnum.embedding:
         return _load_aws_bedrock_embeddings_from_prompt_config(config)
-    else:
-        raise NotImplementedError(f'LLM type {config.type} not supported')
