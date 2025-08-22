@@ -13,7 +13,8 @@ The textual transcript of a podcast in triple backquote.
 ## 3. Output
 The output should include the following:
 * Tagline: Generate 5 memorable and SEO-optimized taglines for the podcast. The tagline should encapsulate the essence of the topics discussed in the podcast.
-* Summary: Summary of podcast should be 500-1000 words that uses informative, concise and relevant language.
+* Summary: Summary of podcast should be 5 / 6 paragraphs long that uses informative, concise and relevant language.
+* Key Takeaways: Suggest a list of 4 or 5 items highlighting the key takeaways.
 * Question: Suggest 5 questions that can be answered by the content of the podcast and will engage the audience to watch the podcast.
 * Keywords: Provide a list of SEO keywords that reflects the content of the podcast.
 

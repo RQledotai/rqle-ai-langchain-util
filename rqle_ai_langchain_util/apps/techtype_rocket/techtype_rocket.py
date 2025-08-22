@@ -29,7 +29,7 @@ class TechTypeRocket:
         # configure the LLM to be executed
         self.config_folder = config_folder
         self.parser = StrOutputParser()
-        self.llm_mediator = LLMMediator(LLMAdapter.OLLAMA_AI, self.config_folder)
+        self.llm_mediator = LLMMediator(LLMAdapter.AWS_BEDROCK, self.config_folder)
 
     def load_chain(self):
         """

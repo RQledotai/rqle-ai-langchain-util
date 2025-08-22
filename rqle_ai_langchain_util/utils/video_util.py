@@ -1,6 +1,7 @@
 import json
 
-import moviepy.editor as mpe
+
+from moviepy import VideoFileClip
 from pydub import AudioSegment
 import speech_recognition as sr
 
@@ -23,7 +24,7 @@ def video_to_wav(video_path: str) -> str:
     """
     try:
         audio_filename = f'{AUDIO_TMP_FOLDER}/extracted_audio.wav'
-        video = mpe.VideoFileClip(video_path)
+        video = VideoFileClip(video_path)
         video.audio.write_audiofile(audio_filename)
         video.close()
         return audio_filename
@@ -118,20 +119,19 @@ def transcribe_audio(audio_path: str, segment_size: int = 60000, segment_overlap
     try:
         for segment_audio_file in audio_segment_files:
             logger.debug(f'Transcribing {segment_audio_file} with {speech_recognition_engine}')
+
             # open and read the audio segment file
-            with sr.AudioFile(segment_audio_file) as audio_file:
-                # read the audio track from the file
-                audio_track = recognizer_engine.listen(audio_file)
-                # transcribe the audio track based on the speech recognition engine
-                if speech_recognition_engine == 'sphinx':
-                    #TODO to be tested to determine that it works as expected
-                    recognized_text += f'{json.loads(recognizer_engine.recognize_sphinx(audio_track, language=language))}\n'
-                elif speech_recognition_engine == 'vosk':
-                    recognized_text += f'{json.loads(recognizer_engine.recognize_vosk(audio_track, language=language))["text"]}\n'
+            tmp_audio_track = sr.AudioData.from_file(segment_audio_file)
+
+            # transcribe the audio track based on the speech recognition engine
+            if speech_recognition_engine == 'sphinx':
+                # TODO to be tested to determine that it works as expected
+                recognized_text += f'{json.loads(recognizer_engine.recognize_sphinx(tmp_audio_track, language=language))}\n'
+            elif speech_recognition_engine == 'vosk':
+                recognized_text += f'{json.loads(recognizer_engine.recognize_vosk(tmp_audio_track, language=language))["text"]}\n'
 
         logger.info(f'Transcription process completed for {audio_path}.')
 
-        # TODO create a temporary file to store the transcribed text
         # TODO create langchain document with text + metadata
         return recognized_text
     except FileNotFoundError:

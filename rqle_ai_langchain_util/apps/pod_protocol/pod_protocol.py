@@ -32,7 +32,7 @@ class PodProtocol:
         """
         self.config_folder = config_folder
         self.parser = StrOutputParser()
-        self.llm_mediator = LLMMediator(LLMAdapter.OLLAMA_AI, self.config_folder)
+        self.llm_mediator = LLMMediator(LLMAdapter.GOOGLE_GEMINI, self.config_folder)
 
     def load_chain(self):
         try:
@@ -52,7 +52,8 @@ class PodProtocol:
         try:
             # retrieve the text transcription of the video
             audio_filename = video_util.video_to_wav(video_file)
-            transcribed_text = video_util.transcribe_audio(audio_filename, speech_recognition_engine='vosk')
+            transcribed_text = video_util.transcribe_audio(audio_filename, speech_recognition_engine='vosk',
+                                                           segment_size=200000)
             file_util.write_file(file_dir=settings.TEXT_TMP_FOLDER, file_name='transcribed_text.txt',
                                  file_content=transcribed_text)
 
@@ -71,7 +72,7 @@ if __name__ == '__main__':
     start = time()
     try:
         pod_protocol = PodProtocol(config_folder='pod_protocol')
-        pod_protocol.invoke_chain(video_file='C:/Users/quent/Videos/Podcasts/TalkLab_interviews/EP22_AI_Episode-4.mp4')
+        pod_protocol.invoke_chain(video_file='C:/Users/ExpertQuentin/Downloads/Ep5_AIOdyssey_WithCaption.mp4')
     except Exception:
         pass
     finally:
