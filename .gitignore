@@ -164,8 +164,7 @@ cython_debug/
 logs/
 
 # temporary data
-tmp/audio/*
-tmp/transcripts/*
+tmp/*
 
 # vosk model used for transcription of the audio track
 model/*

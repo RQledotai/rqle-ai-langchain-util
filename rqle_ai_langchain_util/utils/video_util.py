@@ -1,6 +1,6 @@
 import json
 
-import moviepy.editor as mpe
+from moviepy import VideoFileClip
 from pydub import AudioSegment
 import speech_recognition as sr
 
@@ -22,10 +22,19 @@ def video_to_wav(video_path: str) -> str:
     TODO add support for retrieving videos from YouTube
     """
     try:
+        # instantiate the video file clip
+        video_clip = VideoFileClip(video_path)
+        logger.debug(f'Duration of {video_path} is {video_clip.duration} seconds')
+        
+        # create the audio filename
         audio_filename = f'{AUDIO_TMP_FOLDER}/extracted_audio.wav'
-        video = mpe.VideoFileClip(video_path)
-        video.audio.write_audiofile(audio_filename)
-        video.close()
+        audio_clip = video_clip.audio        
+        audio_clip.write_audiofile(audio_filename)
+
+        # close the video clip
+        video_clip.close()
+        audio_clip.close()
+        
         return audio_filename
     except FileNotFoundError:
         raise FileNotFoundError(f'Video file at {video_path} not found')
@@ -127,7 +136,8 @@ def transcribe_audio(audio_path: str, segment_size: int = 60000, segment_overlap
                     #TODO to be tested to determine that it works as expected
                     recognized_text += f'{json.loads(recognizer_engine.recognize_sphinx(audio_track, language=language))}\n'
                 elif speech_recognition_engine == 'vosk':
-                    recognized_text += f'{json.loads(recognizer_engine.recognize_vosk(audio_track, language=language))["text"]}\n'
+                    #logger.debug(f'VOSK Transcription: {recognizer_engine.recognize_vosk(audio_track)}')
+                    recognized_text += f'{recognizer_engine.recognize_vosk(audio_track, verbose=True)} \n'
 
         logger.info(f'Transcription process completed for {audio_path}.')
 
