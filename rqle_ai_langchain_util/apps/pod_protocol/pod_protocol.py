@@ -71,7 +71,7 @@ if __name__ == '__main__':
     start = time()
     try:
         pod_protocol = PodProtocol(config_folder='pod_protocol')
-        pod_protocol.invoke_chain(video_file='C:/Users/quent/Videos/Public Relations/Podcasts/Knowledge Graph Insights-Ep44-Solving Business Problems with Neuro-Symbolic AI.mp4')
+        pod_protocol.invoke_chain(video_file='C:/Users/quent/Videos/Public Relations/Podcasts/Raghu sir and Quentin.mp4')
     except Exception:
         pass
     finally:

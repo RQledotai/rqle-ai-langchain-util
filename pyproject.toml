@@ -22,6 +22,7 @@ Repository = "https://github.com/RQledotai/rqle-ai-langchain-util.git"
 [tool.poetry.dependencies]
 boto3 = "^1.36"
 coverage-badge = "^1"
+ffmpeg = "^1"
 google-generativeai = "^0.8"
 huggingface-hub = "^0.27"
 langchain = "^0.3"

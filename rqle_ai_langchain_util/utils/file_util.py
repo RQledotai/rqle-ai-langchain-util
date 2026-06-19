@@ -91,7 +91,7 @@ def write_file(file_dir: str, file_name: str, file_content: str) -> None:
     if output_file.is_dir():
         raise IsADirectoryError(f'{output_file} is not a file')
     try:
-        with output_file.open('w') as f:
+        with output_file.open(mode='w', encoding='utf-8') as f:
             f.write(file_content)
     except Exception as e:
         raise IOError(f'Error writing {file_name}: {e}')
